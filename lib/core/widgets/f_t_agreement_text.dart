@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AgreementText extends StatelessWidget {
-  const AgreementText({super.key, required this.text});
+class FTAgreementText extends StatelessWidget {
+  const FTAgreementText({super.key, required this.text});
   final String text;
 
   @override
