@@ -2,6 +2,9 @@
 A feature-based Flutter chat application with WebSocket real-time messaging, OTP email authentication, optional alternative login methods, home dashboard, Apple Health and Google Fit integration, and customizable profile settings.
 
 ## Getting Started
+```
+dart run build_runner build
+```
 
 This project is a starting point for a Flutter application.
 
