@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class FTConfigs {
+class AppConfigs {
   static final appUrl = dotenv.get('APP_URL');
   static final supabaseUrl = dotenv.get('SUPABASE_URL');
   static final supabasePublishableKey = dotenv.get('SUPABASE_ANON_KEY');
