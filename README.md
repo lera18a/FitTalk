@@ -4,6 +4,7 @@ A feature-based Flutter chat application with WebSocket real-time messaging, OTP
 ## Getting Started
 ```
 dart run build_runner build
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 This project is a starting point for a Flutter application.
