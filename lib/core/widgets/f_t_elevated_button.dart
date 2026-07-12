@@ -15,7 +15,7 @@ class FTElevatedButton extends StatelessWidget {
     return Column(
       children: [
         ElevatedButton.icon(
-          onPressed: () => onPressed,
+          onPressed: onPressed,
           icon: icon,
           // Icon(CupertinoIcons.mail, color: Colors.black),
           label: Text(
@@ -24,7 +24,7 @@ class FTElevatedButton extends StatelessWidget {
             style: const TextStyle(color: Colors.black),
           ),
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(vertical: 13),
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 13),
           ),
         ),
       ],
