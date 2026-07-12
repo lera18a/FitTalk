@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/auth_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/send_otp_screen.dart';
+import 'package:fit_talk/feature/auth/presentation/view/pages/settings_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/verification_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +28,21 @@ class AutoRouteSendOtpRoute extends StatelessWidget {
 
 @RoutePage()
 class AutoRouteVerificateOtpRoute extends StatelessWidget {
-  const AutoRouteVerificateOtpRoute({super.key, required this.token});
-  final String token;
+  const AutoRouteVerificateOtpRoute({super.key});
+
   @override
-  Widget build(BuildContext context) =>
-      VerificationScreen(key: key, token: token);
+  Widget build(BuildContext context) => VerificationScreen(key: key);
+}
+
+@RoutePage()
+class AutoRouteHomeHostRoute extends AutoRouter {
+  const AutoRouteHomeHostRoute({super.key});
+}
+
+@RoutePage()
+class AutoRouteSettingsRoute extends StatelessWidget {
+  const AutoRouteSettingsRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) => SettingsScreen();
 }

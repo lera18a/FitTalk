@@ -4,4 +4,5 @@ abstract final class Routes {
   static const verificateOtp = 'verification';
   static const chats = 'chats';
   static const settings = 'settings';
+  static const host = '/host';
 }
