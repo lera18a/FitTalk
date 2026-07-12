@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class AppConfigs {
   static final appUrl = dotenv.get('APP_URL');
   static final supabaseUrl = dotenv.get('SUPABASE_URL');
-  static final supabasePublishableKey = dotenv.get('SUPABASE_ANON_KEY');
+  static final supabasePublishableKey = dotenv.get('SUPABASE_PUBLISHABLE_KEY');
 
   // // SupabaseAuthCallback
   // static final supabaseAuthCallback = dotenv.get('supabaseAuthCallback');

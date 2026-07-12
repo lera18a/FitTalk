@@ -1,4 +1,4 @@
-import 'package:fit_talk/app/app.dart';
+import 'package:fit_talk/app/fit_talk_app.dart';
 import 'package:fit_talk/core/configs/app_configs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -11,5 +11,5 @@ Future<void> main() async {
     url: AppConfigs.supabaseUrl,
     publishableKey: AppConfigs.supabasePublishableKey,
   );
-  runApp(const MyApp());
+  runApp(FitTalkApp());
 }
