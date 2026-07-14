@@ -1,0 +1,79 @@
+---
+config:
+  layout: elk
+---
+erDiagram
+    auth_users {
+        uuid id PK
+        string email
+        string encrypted_password
+        timestamp created_at
+    }
+
+    profiles {
+        uuid id PK "FK"
+        string username UK
+        string avatar_url
+        timestamp updated_at
+    }
+
+    chats {
+        uuid id PK
+        uuid user1_id FK
+        uuid user2_id FK
+        timestamp created_at
+    }
+
+    messages {
+        uuid id PK
+        uuid chat_id FK
+        uuid sender_id FK
+        string type
+        text content
+        string attachment_url
+        timestamp created_at
+    }
+
+    health_data {
+        uuid id PK
+        uuid user_id FK
+        string source
+        string metric_type
+        decimal value
+        string unit
+        date recorded_at
+        timestamp synced_at
+    }
+
+    achievement_templates {
+        uuid id PK
+        string code UK
+        string title
+        string metric_type FK
+        decimal threshold
+    }
+
+    user_achievements {
+        uuid id PK
+        uuid user_id FK
+        uuid template_id FK
+        timestamp unlocked_at
+    }
+
+    device_tokens {
+        uuid id PK
+        uuid user_id FK
+        string token
+        string platform
+        timestamp updated_at
+    }
+
+    auth_users ||--|| profiles : "extends"
+    auth_users ||--o{ chats : "initiates"
+    auth_users ||--o{ messages : "sends"
+    auth_users ||--o{ health_data : "owns"
+    auth_users ||--o{ user_achievements : "earns"
+    auth_users ||--o{ device_tokens : "registers"
+    chats ||--o{ messages : "contains"
+    achievement_templates ||--o{ user_achievements : "templates"
+    health_data }o--|| achievement_templates : "triggers"
