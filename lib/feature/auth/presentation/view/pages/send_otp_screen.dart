@@ -1,10 +1,8 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:fit_talk/core/widgets/f_t_agreement_text.dart';
 import 'package:fit_talk/core/widgets/f_t_text_field.dart';
 import 'package:fit_talk/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
-import 'package:fit_talk/routing/app_router.gr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +33,6 @@ class SendOtpScreen extends StatelessWidget {
                     name: 'SendOtpScreen',
                   );
                 }
-
                 return Padding(
                   padding: EdgeInsetsGeometry.all(32),
                   child: SingleChildScrollView(

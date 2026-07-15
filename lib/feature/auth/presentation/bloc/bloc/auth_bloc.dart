@@ -49,14 +49,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _onRequestOtp(RequestOtp event, Emitter<AuthState> emit) async {
     debugPrint('📌 RequestOtp | state: $state');
-    if (state is AuthInitial && state is SendOtp) {
+    if (state is AuthInitial) {
       final currentState = state as AuthInitial;
       final params = currentState.params;
       final result = await _requestOtpUseCase(params);
 
       result.fold(
         (e) => emit(currentState.copyWith(errorMessage: e.message)),
-        (token) => emit(SendOtp()),
+        (token) => emit(AuthSuccess()),
       );
     }
   }

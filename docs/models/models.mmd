@@ -6,12 +6,12 @@ erDiagram
     auth_users {
         uuid id PK
         string email
-        string encrypted_password
         timestamp created_at
     }
 
     profiles {
         uuid id PK "FK"
+        strig nickname 
         string username UK
         string avatar_url
         timestamp updated_at

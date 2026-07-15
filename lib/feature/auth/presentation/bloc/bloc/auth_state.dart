@@ -17,12 +17,6 @@ final class AuthInitial extends AuthState {
   }
 }
 
-final class SendOtp extends AuthState {
-  final String? token;
-
-  SendOtp({this.token});
-}
-
 final class AuthSuccess extends AuthState {}
 
 final class AuthFailure extends AuthState {
@@ -30,8 +24,3 @@ final class AuthFailure extends AuthState {
 
   AuthFailure({required this.message});
 }
-
-// STATE
-// AuthInitial- EMAIL PARAMS, ERROR MESSAGE
-// AuthSuccess - TO SCREEN
-// AuthFailure - MESSAGE

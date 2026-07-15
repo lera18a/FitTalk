@@ -9,10 +9,10 @@ class VerifyOtpUseCase {
   VerifyOtpUseCase(this._repository);
 
   Future<Either<AppFailure, void>> call(EmailParams? emailParams) async {
-    if (emailParams == null) throw 'emailParams is null';
-    if (emailParams.otp == null) return Left(InvalidOtpFailure());
+    if (emailParams == null) return left(UnknownFailure());
+    if (emailParams.otp == null) return left(InvalidOtpFailure());
     if (emailParams.otp == null || emailParams.otp!.isEmpty) {
-      return Left(InvalidOtpFailure());
+      return left(InvalidOtpFailure());
     }
 
     final result = await _repository.verifyOtp(

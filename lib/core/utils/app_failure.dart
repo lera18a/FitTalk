@@ -5,6 +5,13 @@ sealed class AppFailure {
   const AppFailure({this.message}) : cause = null;
 }
 
+class DefaultAppFailure extends AppFailure {
+  final Object? cause;
+  final String? message;
+
+  const DefaultAppFailure({this.message, this.cause});
+}
+
 /// Email / OTP failures
 final class EmailNotFoundFailure extends AppFailure {
   const EmailNotFoundFailure();
@@ -20,20 +27,20 @@ final class OtpExpiredFailure extends AppFailure {
 
 /// Input / form failures
 final class EnterEmailFailure extends AppFailure {
-  const EnterEmailFailure();
+  const EnterEmailFailure() : super(message: 'Please enter your email');
 }
 
 final class InvalidEmailFormatFailure extends AppFailure {
-  const InvalidEmailFormatFailure();
+  const InvalidEmailFormatFailure() : super(message: 'Invalid email format');
 }
 
 final class InvalidAccountFailure extends AppFailure {
-  const InvalidAccountFailure();
+  const InvalidAccountFailure() : super(message: 'Invalid account');
 }
 
 /// Storage failures
 sealed class StorageFailure extends AppFailure {
-  const StorageFailure();
+  const StorageFailure() : super(message: 'Unknown storage failure');
 }
 
 final class DbFailure extends StorageFailure {

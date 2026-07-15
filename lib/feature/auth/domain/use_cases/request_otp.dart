@@ -20,7 +20,7 @@ class RequestOtpUseCase {
       return Left(InvalidEmailFormatFailure());
     }
 
-    await _repository.requestOtp(email: emailParams.email);
-    return right(null);
+    return await _repository.requestOtp(email: emailParams.email);
+    // return right(null);
   }
 }
