@@ -17,6 +17,18 @@ final class AuthInitial extends AuthState {
   }
 }
 
+final class AuthOtpSend extends AuthState {
+  final EmailParams params;
+  final String? errorMessage;
+  AuthOtpSend({required this.params, this.errorMessage});
+  AuthOtpSend copyWith({EmailParams? params, String? errorMessage}) {
+    return AuthOtpSend(
+      params: params ?? this.params,
+      errorMessage: errorMessage,
+    );
+  }
+}
+
 final class AuthSuccess extends AuthState {}
 
 final class AuthFailure extends AuthState {

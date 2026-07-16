@@ -9,6 +9,7 @@ Future<void> main() async {
   await dotenv.load();
   await Supabase.initialize(
     url: AppConfigs.supabaseUrl,
+    // anonKey
     publishableKey: AppConfigs.supabasePublishableKey,
   );
   runApp(FitTalkApp());
