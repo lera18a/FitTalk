@@ -31,7 +31,7 @@ class AuthListener extends StatelessWidget {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(message ?? 'Ошибка')));
-          case SendOtp():
+          case AuthOtpSend():
             router.push(VerificateOtpRoute());
         }
       },

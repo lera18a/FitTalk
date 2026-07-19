@@ -21,7 +21,11 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<AppFailure, void>> requestOtp({required String email}) {
     return _supabase
         .requestOtp(email: email)
-        .then((ans) => right(ans), onError: (e, s) => left(e));
+        .then(
+          (ans) => right(ans),
+          onError: (e, s) =>
+              left(DefaultAppFailure(message: e.toString(), cause: s)),
+        );
   }
 
   @override

@@ -19,8 +19,14 @@ class RequestOtpUseCase {
     if (!emailRegExp.hasMatch(emailParams.email)) {
       return Left(InvalidEmailFormatFailure());
     }
-
-    await _repository.requestOtp(email: emailParams.email);
-    return right(null);
+    try {
+      await _repository.requestOtp(email: emailParams.email);
+      return Right(null);
+    } on Exception catch (e) {
+      // Можно детализировать по типу исключения
+      return Left(DefaultAppFailure(message: e.toString(), cause: e));
+    } catch (e) {
+      return Left(UnknownFailure());
+    }
   }
 }

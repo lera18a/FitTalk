@@ -23,7 +23,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
         child: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
             final errorText = switch (state) {
-              AuthInitial(:final errorMessage) => errorMessage,
+              AuthOtpSend(:final errorMessage) => errorMessage,
               AuthFailure(:final message) => message,
               _ => null,
             };

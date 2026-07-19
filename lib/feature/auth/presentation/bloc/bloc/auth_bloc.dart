@@ -24,15 +24,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LogOut>(_onLogOut);
   }
 
-  /// GOOD
   void _onEmailTextChanged(EmailTextChanged event, Emitter<AuthState> emit) {
     if (state is AuthInitial) {
       final currentState = state as AuthInitial;
       final updatedParams = currentState.params.copyWith(
         email: event.email.trim(),
       );
-
-      emit(currentState.copyWith(params: updatedParams));
+      emit(currentState.copyWith(params: updatedParams, errorMessage: null));
     }
   }
 
@@ -40,47 +38,53 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     OtpTextfieldController event,
     Emitter<AuthState> emit,
   ) {
-    if (state is AuthInitial) {
-      final currentState = state as AuthInitial;
-      final updatedParams = currentState.params.copyWith(otp: event.otp);
-      emit(currentState.copyWith(params: updatedParams));
+    if (state is AuthOtpSend) {
+      final currentState = state as AuthOtpSend;
+      emit(
+        currentState.copyWith(
+          params: currentState.params.copyWith(otp: event.otp),
+        ),
+      );
     }
   }
 
   Future<void> _onRequestOtp(RequestOtp event, Emitter<AuthState> emit) async {
     debugPrint('📌 RequestOtp | state: $state');
-    if (state is AuthInitial && state is SendOtp) {
-      final currentState = state as AuthInitial;
-      final params = currentState.params;
-      final result = await _requestOtpUseCase(params);
+    final EmailParams? params = switch (state) {
+      AuthInitial(:final params) => params,
+      AuthOtpSend(:final params) => params,
+      _ => null,
+    };
 
-      result.fold(
-        (e) => emit(currentState.copyWith(errorMessage: e.message)),
-        (token) => emit(SendOtp()),
-      );
-    }
+    if (params == null) return;
+
+    final result = await _requestOtpUseCase(params);
+    result.fold((failure) {
+      final initialState = state as AuthInitial;
+      final otpSendState = state as AuthInitial;
+      if (state is AuthInitial) {
+        emit(initialState.copyWith(errorMessage: failure.message));
+      } else if (state is AuthOtpSend) {
+        emit(otpSendState.copyWith(errorMessage: failure.message));
+      }
+    }, (_) => emit(AuthOtpSend(params: params)));
+    // }, (_) => emit(AuthSuccess()));
   }
 
   Future<void> _onSignInWithEmail(
     SignInWithEmail event,
     Emitter<AuthState> emit,
   ) async {
-    if (state is AuthInitial) {
-      final currentState = state as AuthInitial;
-      final params = currentState.params;
-      final result = await _verifyOtpUseCase(params);
-      result.fold(
-        (e) => emit(currentState.copyWith(errorMessage: e.message)),
-        (_) => emit(AuthSuccess()),
-      );
-    }
-  }
-
-  Future<void> _onLogOut(LogOut event, Emitter<AuthState> emit) async {
-    emit(
-      AuthInitial(
-        params: EmailParams(email: '', otp: ''),
-      ),
+    if (state is! AuthOtpSend) return;
+    final currentState = state as AuthOtpSend;
+    final params = currentState.params;
+    final result = await _verifyOtpUseCase(params);
+    result.fold(
+      (e) => emit(currentState.copyWith(errorMessage: e.message)),
+      (_) => emit(AuthSuccess()),
     );
   }
+
+  Future<void> _onLogOut(LogOut event, Emitter<AuthState> emit) async =>
+      emit(AuthInitial(params: EmailParams(email: '')));
 }

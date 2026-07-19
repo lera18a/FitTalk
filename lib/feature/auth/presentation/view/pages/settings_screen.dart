@@ -6,7 +6,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('CONGRADiLATION')),
+      appBar: AppBar(title: Text('CONGRADILATION')),
       body: Center(child: Text('Привет с успешной регистрацией тебя')),
     );
   }
