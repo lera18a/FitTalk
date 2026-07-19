@@ -1,0 +1,102 @@
+import 'dart:developer';
+
+import 'package:fit_talk/core/widgets/f_t_agreement_text.dart';
+import 'package:fit_talk/core/widgets/f_t_text_field.dart';
+import 'package:fit_talk/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:fit_talk/routing/app_router.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class SendOtpScreen extends StatelessWidget {
+  const SendOtpScreen({super.key});
+  AppRouter get _router => AppRouter();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Expanded(
+            child: BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                final errorText = switch (state) {
+                  AuthInitial(:final errorMessage) => errorMessage,
+                  AuthFailure(:final message) => message,
+                  _ => null,
+                };
+
+                if (errorText != null) {
+                  log(
+                    '❌ SendOtpScreen | Error: $errorText',
+                    name: 'SendOtpScreen',
+                  );
+                }
+
+                return Padding(
+                  padding: EdgeInsetsGeometry.all(32),
+                  child: SingleChildScrollView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              'Enter your email adress',
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 15),
+                            FTTextField(
+                              keyboardType: TextInputType.emailAddress,
+                              hintText: 'enter your email',
+                              prefixIcon: const Icon(CupertinoIcons.mail_solid),
+                              errorText: errorText,
+                              onChanged: (email) {
+                                context.read<AuthBloc>().add(
+                                  EmailTextChanged(email),
+                                );
+                              },
+                            ),
+                            const SizedBox(height: 10),
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                ),
+                              ),
+                              label: const Text('log in'),
+                              onPressed: () {
+                                log(
+                                  '🚀 SendOtpScreen | RequestOtp pressed',
+                                  name: 'SendOtpScreen',
+                                );
+                                context.read<AuthBloc>().add(RequestOtp());
+                              },
+                            ),
+                            FTAgreementText(
+                              text: 'user Agreement Sign In Email',
+                            ),
+                            const SizedBox(height: 30),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
