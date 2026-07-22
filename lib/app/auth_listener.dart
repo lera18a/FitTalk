@@ -20,19 +20,42 @@ class AuthListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
-      listenWhen: (previous, current) => previous != current,
+      listenWhen: (previous, current) {
+        debugPrint('🔄 AuthListener previous: $previous');
+        debugPrint('🔄 AuthListener current: $current');
+        return previous != current;
+      },
       listener: (context, state) {
         switch (state) {
-          case AuthInitial():
-            break;
+          case AuthInitial(:final errorMessage):
+            debugPrint('🟡 AuthInitial received');
+            debugPrint('🟡 General error: $errorMessage');
+
+            if (errorMessage != null) {
+              debugPrint('🔴 Showing SnackBar: $errorMessage');
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(errorMessage),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+
           case AuthSuccess():
             router.replaceAll([HomeHostRoute()]);
           case AuthFailure(:final message):
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(message ?? 'Ошибка')));
-          case AuthOtpSend():
-            router.push(VerificateOtpRoute());
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  message ?? 'Ошибка',
+                  style: const TextStyle(color: Colors.red),
+                ),
+                backgroundColor: Colors.red,
+              ),
+            );
+          // case AuthOtpSend():
+          //   router.push(VerificateOtpRoute());
         }
       },
       child: child,

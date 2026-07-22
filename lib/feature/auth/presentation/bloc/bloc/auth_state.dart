@@ -7,24 +7,31 @@ final class AuthInitial extends AuthState {
   final EmailParams params;
   final String? errorMessage;
 
-  AuthInitial({required this.params, this.errorMessage});
+  final String? emailError;
+  final String? passwordError;
+  final String? confirmPasswordError;
 
-  AuthInitial copyWith({EmailParams? params, String? errorMessage}) {
+  AuthInitial({
+    required this.params,
+    this.errorMessage,
+    this.emailError,
+    this.passwordError,
+    this.confirmPasswordError,
+  });
+
+  AuthInitial copyWith({
+    EmailParams? params,
+    String? errorMessage,
+    String? emailError,
+    String? passwordError,
+    String? confirmPasswordError,
+  }) {
     return AuthInitial(
       params: params ?? this.params,
       errorMessage: errorMessage,
-    );
-  }
-}
-
-final class AuthOtpSend extends AuthState {
-  final EmailParams params;
-  final String? errorMessage;
-  AuthOtpSend({required this.params, this.errorMessage});
-  AuthOtpSend copyWith({EmailParams? params, String? errorMessage}) {
-    return AuthOtpSend(
-      params: params ?? this.params,
-      errorMessage: errorMessage,
+      emailError: emailError,
+      passwordError: passwordError,
+      confirmPasswordError: confirmPasswordError,
     );
   }
 }

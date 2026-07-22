@@ -45,33 +45,33 @@ class HomeHostRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.AutoRouteOauthRoute]
-class OauthRoute extends _i2.PageRouteInfo<void> {
-  const OauthRoute({List<_i2.PageRouteInfo>? children})
-    : super(OauthRoute.name, initialChildren: children);
+/// [_i1.AutoRouteLoginRoute]
+class LoginRoute extends _i2.PageRouteInfo<void> {
+  const LoginRoute({List<_i2.PageRouteInfo>? children})
+    : super(LoginRoute.name, initialChildren: children);
 
-  static const String name = 'OauthRoute';
+  static const String name = 'LoginRoute';
 
   static _i2.PageInfo page = _i2.PageInfo(
     name,
     builder: (data) {
-      return const _i1.AutoRouteOauthRoute();
+      return const _i1.AutoRouteLoginRoute();
     },
   );
 }
 
 /// generated route for
-/// [_i1.AutoRouteSendOtpRoute]
-class SendOtpRoute extends _i2.PageRouteInfo<void> {
-  const SendOtpRoute({List<_i2.PageRouteInfo>? children})
-    : super(SendOtpRoute.name, initialChildren: children);
+/// [_i1.AutoRouteRegisterRoute]
+class RegisterRoute extends _i2.PageRouteInfo<void> {
+  const RegisterRoute({List<_i2.PageRouteInfo>? children})
+    : super(RegisterRoute.name, initialChildren: children);
 
-  static const String name = 'SendOtpRoute';
+  static const String name = 'RegisterRoute';
 
   static _i2.PageInfo page = _i2.PageInfo(
     name,
     builder: (data) {
-      return const _i1.AutoRouteSendOtpRoute();
+      return const _i1.AutoRouteRegisterRoute();
     },
   );
 }
@@ -88,22 +88,6 @@ class SettingsRoute extends _i2.PageRouteInfo<void> {
     name,
     builder: (data) {
       return const _i1.AutoRouteSettingsRoute();
-    },
-  );
-}
-
-/// generated route for
-/// [_i1.AutoRouteVerificateOtpRoute]
-class VerificateOtpRoute extends _i2.PageRouteInfo<void> {
-  const VerificateOtpRoute({List<_i2.PageRouteInfo>? children})
-    : super(VerificateOtpRoute.name, initialChildren: children);
-
-  static const String name = 'VerificateOtpRoute';
-
-  static _i2.PageInfo page = _i2.PageInfo(
-    name,
-    builder: (data) {
-      return const _i1.AutoRouteVerificateOtpRoute();
     },
   );
 }

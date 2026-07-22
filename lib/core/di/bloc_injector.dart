@@ -11,8 +11,11 @@ class BlocInjector extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthBloc(
-            requestOtpUseCase: context.read(),
-            verifyOtpUseCase: context.read(),
+            emailValidator: context.read(),
+            passwordValidator: context.read(),
+            authRepository: context.read(),
+            // requestOtpUseCase: context.read(),
+            // verifyOtpUseCase: context.read(),
           ),
         ),
       ],

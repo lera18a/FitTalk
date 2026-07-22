@@ -9,18 +9,24 @@ final class EmailTextChanged extends AuthEvent {
   EmailTextChanged(this.email);
 }
 
-final class OtpTextfieldController extends AuthEvent {
-  final String otp;
+final class PasswordTextChanged extends AuthEvent {
+  final String password;
 
-  OtpTextfieldController(this.otp);
+  PasswordTextChanged(this.password);
+}
+
+final class ConfirmPassword extends AuthEvent {
+  final String password;
+
+  ConfirmPassword(this.password);
+}
+
+final class SignUpWithEmail extends AuthEvent {
+  SignUpWithEmail();
 }
 
 final class SignInWithEmail extends AuthEvent {
   SignInWithEmail();
-}
-
-final class RequestOtp extends AuthEvent {
-  RequestOtp();
 }
 
 final class LogOut extends AuthEvent {

@@ -11,16 +11,27 @@ class SupabaseDatasource {
 
   Future<void> signOut() async => await _client.auth.signOut();
 
-  Future<void> requestOtp({required String email}) async {
-    await _client.auth.signInWithOtp(email: email);
-  }
+  // Future<void> requestOtp({required String email}) async {
+  //   await _client.auth.signInWithOtp(email: email);
+  // }
 
-  Future<void> verifyOtp({
-    required String? email,
-    required String? token,
-  }) async => await _client.auth.verifyOTP(
-    type: OtpType.email,
-    email: email,
-    token: token,
-  );
+  Future<void> signInWithPassword({
+    required String email,
+    required String password,
+  }) async =>
+      await _client.auth.signInWithPassword(email: email, password: password);
+
+  Future<void> signUp({
+    required String email,
+    required String password,
+  }) async => await _client.auth.signUp(email: email, password: password);
+
+  // Future<void> verifyOtp({
+  //   required String? email,
+  //   required String? token,
+  // }) async => await _client.auth.verifyOTP(
+  //   type: OtpType.email,
+  //   email: email,
+  //   token: token,
+  // );
 }

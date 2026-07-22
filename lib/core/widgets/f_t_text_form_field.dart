@@ -1,33 +1,53 @@
 import 'package:flutter/material.dart';
 
-class FTTextField extends StatelessWidget {
-  const FTTextField({
+class FTTextFormField extends StatefulWidget {
+  const FTTextFormField({
     super.key,
     required this.onChanged,
     required this.hintText,
     required this.errorText,
     required this.prefixIcon,
     required this.keyboardType,
+    this.obscureText = false,
+    this.isPasswordField = false,
   });
 
+  final bool isPasswordField;
   final Widget? prefixIcon;
   final ValueChanged<String>? onChanged;
   final String hintText;
   final TextInputType keyboardType;
   final String? errorText;
+  final bool obscureText;
 
+  @override
+  State<FTTextFormField> createState() => _FTTextFormFieldState();
+}
+
+class _FTTextFormFieldState extends State<FTTextFormField> {
   // @override
+  bool _obscure = true;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: onChanged,
+      onChanged: widget.onChanged,
       autofocus: true,
-      // obscureText: false,
-      keyboardType: keyboardType,
+      obscureText: widget.isPasswordField ? _obscure : false,
+      keyboardType: widget.keyboardType,
+
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
+        suffixIcon: widget.isPasswordField
+            ? IconButton(
+                icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility),
+                onPressed: () {
+                  setState(() => _obscure = !_obscure);
+                },
+              )
+            : null,
         border: InputBorder.none,
-        prefixIcon: prefixIcon,
+        prefixIcon: widget.prefixIcon,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(100),
           borderSide: const BorderSide(color: Colors.transparent),
@@ -46,9 +66,9 @@ class FTTextField extends StatelessWidget {
         ),
         fillColor: Colors.grey.shade100,
         filled: true,
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: TextStyle(color: Colors.grey[500]),
-        errorText: errorText,
+        errorText: widget.errorText,
       ),
     );
   }

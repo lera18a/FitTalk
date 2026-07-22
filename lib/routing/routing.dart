@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fit_talk/feature/auth/presentation/view/pages/auth_screen.dart';
-import 'package:fit_talk/feature/auth/presentation/view/pages/send_otp_screen.dart';
+import 'package:fit_talk/feature/auth/presentation/view/pages/login_screen.dart';
+import 'package:fit_talk/feature/auth/presentation/view/pages/register_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/settings_screen.dart';
-import 'package:fit_talk/feature/auth/presentation/view/pages/verification_screen.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -11,32 +10,24 @@ class AutoRouteAuthRoute extends AutoRouter {
 }
 
 @RoutePage()
-class AutoRouteOauthRoute extends StatelessWidget {
-  const AutoRouteOauthRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) => OauthScreen();
-}
-
-@RoutePage()
-class AutoRouteSendOtpRoute extends StatelessWidget {
-  const AutoRouteSendOtpRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) => SendOtpScreen();
-}
-
-@RoutePage()
-class AutoRouteVerificateOtpRoute extends StatelessWidget {
-  const AutoRouteVerificateOtpRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) => VerificationScreen(key: key);
-}
-
-@RoutePage()
 class AutoRouteHomeHostRoute extends AutoRouter {
   const AutoRouteHomeHostRoute({super.key});
+}
+
+@RoutePage()
+class AutoRouteLoginRoute extends StatelessWidget {
+  const AutoRouteLoginRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) => LoginScreen();
+}
+
+@RoutePage()
+class AutoRouteRegisterRoute extends StatelessWidget {
+  const AutoRouteRegisterRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) => RegisterScreen();
 }
 
 @RoutePage()

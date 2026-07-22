@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EmailParams {
 
- String get email; String? get otp;
+ String get email; String? get password; String? get confirmPassword;
 /// Create a copy of EmailParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $EmailParamsCopyWith<EmailParams> get copyWith => _$EmailParamsCopyWithImpl<Emai
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmailParams&&(identical(other.email, email) || other.email == email)&&(identical(other.otp, otp) || other.otp == otp));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmailParams&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,otp);
+int get hashCode => Object.hash(runtimeType,email,password,confirmPassword);
 
 @override
 String toString() {
-  return 'EmailParams(email: $email, otp: $otp)';
+  return 'EmailParams(email: $email, password: $password, confirmPassword: $confirmPassword)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $EmailParamsCopyWith<$Res>  {
   factory $EmailParamsCopyWith(EmailParams value, $Res Function(EmailParams) _then) = _$EmailParamsCopyWithImpl;
 @useResult
 $Res call({
- String email, String? otp
+ String email, String? password, String? confirmPassword
 });
 
 
@@ -62,10 +62,11 @@ class _$EmailParamsCopyWithImpl<$Res>
 
 /// Create a copy of EmailParams
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? otp = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? password = freezed,Object? confirmPassword = freezed,}) {
   return _then(_self.copyWith(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,otp: freezed == otp ? _self.otp : otp // ignore: cast_nullable_to_non_nullable
+as String,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String?,confirmPassword: freezed == confirmPassword ? _self.confirmPassword : confirmPassword // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -151,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? otp)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? password,  String? confirmPassword)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmailParams() when $default != null:
-return $default(_that.email,_that.otp);case _:
+return $default(_that.email,_that.password,_that.confirmPassword);case _:
   return orElse();
 
 }
@@ -172,10 +173,10 @@ return $default(_that.email,_that.otp);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? otp)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? password,  String? confirmPassword)  $default,) {final _that = this;
 switch (_that) {
 case _EmailParams():
-return $default(_that.email,_that.otp);case _:
+return $default(_that.email,_that.password,_that.confirmPassword);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +193,10 @@ return $default(_that.email,_that.otp);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? otp)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? password,  String? confirmPassword)?  $default,) {final _that = this;
 switch (_that) {
 case _EmailParams() when $default != null:
-return $default(_that.email,_that.otp);case _:
+return $default(_that.email,_that.password,_that.confirmPassword);case _:
   return null;
 
 }
@@ -207,11 +208,12 @@ return $default(_that.email,_that.otp);case _:
 
 
 class _EmailParams implements EmailParams {
-  const _EmailParams({required this.email, this.otp});
+  const _EmailParams({required this.email, this.password, this.confirmPassword});
   
 
 @override final  String email;
-@override final  String? otp;
+@override final  String? password;
+@override final  String? confirmPassword;
 
 /// Create a copy of EmailParams
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +225,16 @@ _$EmailParamsCopyWith<_EmailParams> get copyWith => __$EmailParamsCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmailParams&&(identical(other.email, email) || other.email == email)&&(identical(other.otp, otp) || other.otp == otp));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmailParams&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,otp);
+int get hashCode => Object.hash(runtimeType,email,password,confirmPassword);
 
 @override
 String toString() {
-  return 'EmailParams(email: $email, otp: $otp)';
+  return 'EmailParams(email: $email, password: $password, confirmPassword: $confirmPassword)';
 }
 
 
@@ -243,7 +245,7 @@ abstract mixin class _$EmailParamsCopyWith<$Res> implements $EmailParamsCopyWith
   factory _$EmailParamsCopyWith(_EmailParams value, $Res Function(_EmailParams) _then) = __$EmailParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String? otp
+ String email, String? password, String? confirmPassword
 });
 
 
@@ -260,10 +262,11 @@ class __$EmailParamsCopyWithImpl<$Res>
 
 /// Create a copy of EmailParams
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? otp = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = freezed,Object? confirmPassword = freezed,}) {
   return _then(_EmailParams(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,otp: freezed == otp ? _self.otp : otp // ignore: cast_nullable_to_non_nullable
+as String,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String?,confirmPassword: freezed == confirmPassword ? _self.confirmPassword : confirmPassword // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

@@ -1,9 +1,9 @@
 import 'package:fit_talk/app/app_lifecicle.dart';
-import 'package:fit_talk/feature/auth/data/auth_repository_impl.dart';
+import 'package:fit_talk/feature/auth/data/repository_impl/auth_repository_impl.dart';
 import 'package:fit_talk/feature/auth/data/datasources/supabase_datasource.dart';
-import 'package:fit_talk/feature/auth/domain/auth_repository.dart';
-import 'package:fit_talk/feature/auth/domain/use_cases/request_otp.dart';
-import 'package:fit_talk/feature/auth/domain/use_cases/verify_otp.dart';
+import 'package:fit_talk/feature/auth/domain/repository/auth_repository.dart';
+import 'package:fit_talk/feature/auth/domain/use_cases/email_validator.dart';
+import 'package:fit_talk/feature/auth/domain/use_cases/password_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -31,8 +31,8 @@ class _DependencyInjectorWidgetState extends State<DependencyInjectorWidget> {
         Provider<AuthRepository>(
           create: (context) => AuthRepositoryImpl(supabase: context.read()),
         ),
-        Provider(create: (context) => RequestOtpUseCase(context.read())),
-        Provider(create: (context) => VerifyOtpUseCase(context.read())),
+        Provider(create: (context) => EmailValidatorUseCase()),
+        Provider(create: (context) => PasswordValidatorUseCase()),
       ],
       child: widget._child,
     );
