@@ -1,6 +1,6 @@
 import 'package:fit_talk/core/utils/app_failure.dart';
 import 'package:fit_talk/feature/auth/data/datasources/supabase_datasource.dart';
-import 'package:fit_talk/feature/auth/domain/auth_repository.dart';
+import 'package:fit_talk/feature/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
 class AuthRepositoryImpl implements AuthRepository {

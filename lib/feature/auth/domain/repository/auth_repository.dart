@@ -17,5 +17,6 @@ abstract interface class AuthRepository {
   //   required String email,
   //   required String? token,
   // });
+
   Future<void> signOut();
 }

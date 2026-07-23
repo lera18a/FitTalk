@@ -111,6 +111,7 @@ extension AppFailureX on AppFailure {
     InvalidEmailFormatFailure() => 'Invalid email format',
     InvalidAccountFailure() => 'Invalid account',
     EmailNotFoundFailure() => 'Email not found',
+    // ignore: unreachable_switch_case
     InvalidPasswordFailure() => 'Invalid password',
     InvalidOtpFailure() => 'Invalid OTP code',
     OtpExpiredFailure() => 'OTP code has expired',

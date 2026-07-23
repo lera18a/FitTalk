@@ -56,6 +56,8 @@ class AuthListener extends StatelessWidget {
             );
           // case AuthOtpSend():
           //   router.push(VerificateOtpRoute());
+          case AuthLoggedOut():
+            router.replaceAll([const AuthRoute()]);
         }
       },
       child: child,

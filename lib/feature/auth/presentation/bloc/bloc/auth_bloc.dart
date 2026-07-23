@@ -157,9 +157,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return null;
   }
 
-  Future<void> _onLogOut(LogOut event, Emitter<AuthState> emit) async => emit(
-    AuthInitial(
-      params: EmailParams(email: '', password: ''),
-    ),
-  );
+  Future<void> _onLogOut(LogOut event, Emitter<AuthState> emit) async {
+    try {
+      await _authRepository.signOut();
+      emit(AuthLoggedOut());
+    } catch (e) {
+      emit(AuthFailure(message: 'Не удалось выйти из аккаунта'));
+    }
+  }
 }
