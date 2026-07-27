@@ -94,7 +94,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Профиль успешно сохранен!')),
                 );
-                context.router.replaceAll([const HomeHostRoute()]);
+                context.router.replaceAll([HomeHostRoute()]);
               case ProfileSetupStatus.failure:
                 ScaffoldMessenger.of(
                   context,

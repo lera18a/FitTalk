@@ -23,7 +23,13 @@ class AppRouter extends RootStackRouter {
       initial: true,
       page: HomeHostRoute.page,
       guards: [AuthGuard()],
-      children: [AutoRoute(page: SettingsRoute.page, path: '', initial: true)],
+      children: [
+        AutoRoute(page: FriendsRoute.page, path: Routes.friends),
+        AutoRoute(page: HealthyRoute.page, path: Routes.healthy),
+        AutoRoute(page: AchievementsRoute.page, path: Routes.achievements),
+        AutoRoute(page: ChatsRoute.page, path: Routes.chats),
+        AutoRoute(page: SettingsRoute.page, path: '', initial: true),
+      ],
     ),
   ];
 }

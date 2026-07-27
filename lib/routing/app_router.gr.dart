@@ -13,6 +13,22 @@ import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:fit_talk/routing/routing.dart' as _i1;
 
 /// generated route for
+/// [_i1.AutoRouteAchievementsRoute]
+class AchievementsRoute extends _i2.PageRouteInfo<void> {
+  const AchievementsRoute({List<_i2.PageRouteInfo>? children})
+    : super(AchievementsRoute.name, initialChildren: children);
+
+  static const String name = 'AchievementsRoute';
+
+  static _i2.PageInfo page = _i2.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteAchievementsRoute();
+    },
+  );
+}
+
+/// generated route for
 /// [_i1.AutoRouteAuthRoute]
 class AuthRoute extends _i2.PageRouteInfo<void> {
   const AuthRoute({List<_i2.PageRouteInfo>? children})
@@ -24,6 +40,54 @@ class AuthRoute extends _i2.PageRouteInfo<void> {
     name,
     builder: (data) {
       return const _i1.AutoRouteAuthRoute();
+    },
+  );
+}
+
+/// generated route for
+/// [_i1.AutoRouteChatsRoute]
+class ChatsRoute extends _i2.PageRouteInfo<void> {
+  const ChatsRoute({List<_i2.PageRouteInfo>? children})
+    : super(ChatsRoute.name, initialChildren: children);
+
+  static const String name = 'ChatsRoute';
+
+  static _i2.PageInfo page = _i2.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteChatsRoute();
+    },
+  );
+}
+
+/// generated route for
+/// [_i1.AutoRouteFriendsRoute]
+class FriendsRoute extends _i2.PageRouteInfo<void> {
+  const FriendsRoute({List<_i2.PageRouteInfo>? children})
+    : super(FriendsRoute.name, initialChildren: children);
+
+  static const String name = 'FriendsRoute';
+
+  static _i2.PageInfo page = _i2.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteFriendsRoute();
+    },
+  );
+}
+
+/// generated route for
+/// [_i1.AutoRouteHealthyRoute]
+class HealthyRoute extends _i2.PageRouteInfo<void> {
+  const HealthyRoute({List<_i2.PageRouteInfo>? children})
+    : super(HealthyRoute.name, initialChildren: children);
+
+  static const String name = 'HealthyRoute';
+
+  static _i2.PageInfo page = _i2.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteHealthyRoute();
     },
   );
 }
