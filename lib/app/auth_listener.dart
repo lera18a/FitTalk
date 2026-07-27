@@ -42,7 +42,7 @@ class AuthListener extends StatelessWidget {
               );
             }
 
-          case AuthSuccess():
+          case AuthSignInSuccess():
             router.replaceAll([HomeHostRoute()]);
           case AuthFailure(:final message):
             ScaffoldMessenger.of(context).showSnackBar(
@@ -58,6 +58,8 @@ class AuthListener extends StatelessWidget {
           //   router.push(VerificateOtpRoute());
           case AuthLoggedOut():
             router.replaceAll([const AuthRoute()]);
+          case AuthSignUpSuccess():
+            router.replaceAll([ProfileSetupRoute()]);
         }
       },
       child: child,

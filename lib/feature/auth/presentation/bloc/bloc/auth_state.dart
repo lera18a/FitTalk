@@ -36,7 +36,9 @@ final class AuthInitial extends AuthState {
   }
 }
 
-final class AuthSuccess extends AuthState {}
+final class AuthSignInSuccess extends AuthState {}
+
+final class AuthSignUpSuccess extends AuthState {}
 
 final class AuthFailure extends AuthState {
   final String? message;

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/login_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/register_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/settings_screen.dart';
+import 'package:fit_talk/feature/profile_setup/presentation/view/pages/profile_setup_screen.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -36,4 +37,12 @@ class AutoRouteSettingsRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SettingsScreen();
+}
+
+@RoutePage()
+class AutoRouteProfileSetupRoute extends StatelessWidget {
+  const AutoRouteProfileSetupRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) => ProfileSetupScreen();
 }

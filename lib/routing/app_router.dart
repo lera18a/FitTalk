@@ -17,6 +17,7 @@ class AppRouter extends RootStackRouter {
         // AutoRoute(page: VerificateOtpRoute.page, path: Routes.verificateOtp),
       ],
     ),
+    AutoRoute(path: Routes.setupProfile, page: ProfileSetupRoute.page),
     AutoRoute(
       path: Routes.host,
       initial: true,

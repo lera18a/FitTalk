@@ -98,7 +98,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     result.fold(
       (failure) => emit(current.copyWith(errorMessage: failure.message)),
-      (_) => emit(AuthSuccess()),
+      (_) => emit(AuthSignInSuccess()),
     );
   }
 
@@ -140,7 +140,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     result.fold(
       (failure) => emit(current.copyWith(errorMessage: failure.message)),
-      (_) => emit(AuthSuccess()),
+      (_) => emit(AuthSignUpSuccess()),
     );
   }
 

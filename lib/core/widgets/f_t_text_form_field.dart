@@ -7,18 +7,20 @@ class FTTextFormField extends StatefulWidget {
     required this.hintText,
     required this.errorText,
     required this.prefixIcon,
-    required this.keyboardType,
+    this.keyboardType,
     this.obscureText = false,
     this.isPasswordField = false,
+    this.label,
   });
 
   final bool isPasswordField;
   final Widget? prefixIcon;
   final ValueChanged<String>? onChanged;
   final String hintText;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final String? errorText;
   final bool obscureText;
+  final String? label;
 
   @override
   State<FTTextFormField> createState() => _FTTextFormFieldState();
@@ -32,7 +34,7 @@ class _FTTextFormFieldState extends State<FTTextFormField> {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: widget.onChanged,
-      autofocus: true,
+      // autofocus: true,
       obscureText: widget.isPasswordField ? _obscure : false,
       keyboardType: widget.keyboardType,
 
@@ -69,6 +71,7 @@ class _FTTextFormFieldState extends State<FTTextFormField> {
         hintText: widget.hintText,
         hintStyle: TextStyle(color: Colors.grey[500]),
         errorText: widget.errorText,
+        labelText: widget.label,
       ),
     );
   }

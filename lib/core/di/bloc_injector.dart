@@ -1,4 +1,5 @@
 import 'package:fit_talk/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:fit_talk/feature/profile_setup/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,9 @@ class BlocInjector extends StatelessWidget {
             // requestOtpUseCase: context.read(),
             // verifyOtpUseCase: context.read(),
           ),
+        ),
+        BlocProvider(
+          create: (context) => ProfileBloc(profileRepository: context.read()),
         ),
       ],
       child: _child,

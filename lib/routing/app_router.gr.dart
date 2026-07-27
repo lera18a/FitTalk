@@ -61,6 +61,22 @@ class LoginRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i1.AutoRouteProfileSetupRoute]
+class ProfileSetupRoute extends _i2.PageRouteInfo<void> {
+  const ProfileSetupRoute({List<_i2.PageRouteInfo>? children})
+    : super(ProfileSetupRoute.name, initialChildren: children);
+
+  static const String name = 'ProfileSetupRoute';
+
+  static _i2.PageInfo page = _i2.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteProfileSetupRoute();
+    },
+  );
+}
+
+/// generated route for
 /// [_i1.AutoRouteRegisterRoute]
 class RegisterRoute extends _i2.PageRouteInfo<void> {
   const RegisterRoute({List<_i2.PageRouteInfo>? children})
