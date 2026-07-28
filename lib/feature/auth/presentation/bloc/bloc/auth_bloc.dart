@@ -161,6 +161,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       await _authRepository.signOut();
       emit(AuthLoggedOut());
+      emit(AuthInitial(params: EmailParams(email: '')));
     } catch (e) {
       emit(AuthFailure(message: 'Не удалось выйти из аккаунта'));
     }
