@@ -11,6 +11,7 @@ import 'package:fit_talk/feature/healthy/presentation/view/pages/healthy_screen.
 import 'package:fit_talk/feature/home/home.dart';
 import 'package:fit_talk/feature/profile_setup/presentation/view/pages/profile_setup_screen.dart';
 import 'package:fit_talk/feature/settings/settings/presentation/view/widgets/settings_profile_wrapper.dart';
+import 'package:fit_talk/feature/settings/theme/presentation/view/pages/theme_settings_screen.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -117,4 +118,11 @@ class AutoRouteSettingsProfileWrapperRoute extends StatelessWidget {
   const AutoRouteSettingsProfileWrapperRoute({super.key});
   @override
   Widget build(BuildContext context) => SettingsProfileWrapper();
+}
+
+@RoutePage()
+class AutoRouteThemeSettingsRoute extends StatelessWidget {
+  const AutoRouteThemeSettingsRoute({super.key});
+  @override
+  Widget build(BuildContext context) => ThemeSettingsScreen();
 }

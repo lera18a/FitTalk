@@ -32,9 +32,14 @@ class AppRouter extends RootStackRouter {
           page: SettingsProfileWrapperRoute.page,
           path: '',
           initial: true,
+          children: [
+            AutoRoute(page: SettingsRoute.page, path: '', initial: true),
+            AutoRoute(page: ProfilePhotoRoute.page, path: Routes.profilePhoto),
+          ],
         ),
       ],
     ),
-    AutoRoute(page: ProfilePhotoRoute.page, path: Routes.profilePhoto),
+
+    AutoRoute(page: ThemeSettingsRoute.page, path: Routes.themeSettings),
   ];
 }

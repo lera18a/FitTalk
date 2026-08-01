@@ -82,6 +82,9 @@ class SettingsScreen extends StatelessWidget {
                             if (item.title == 'Фото профиля') {
                               context.router.push(ProfilePhotoRoute());
                             }
+                            if (item.title == 'Темы') {
+                              context.router.push(ThemeSettingsRoute());
+                            }
                           },
                         ),
                         const Divider(height: 1),

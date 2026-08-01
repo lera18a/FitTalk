@@ -223,6 +223,22 @@ class SettingsRoute extends _i3.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i1.AutoRouteThemeSettingsRoute]
+class ThemeSettingsRoute extends _i3.PageRouteInfo<void> {
+  const ThemeSettingsRoute({List<_i3.PageRouteInfo>? children})
+    : super(ThemeSettingsRoute.name, initialChildren: children);
+
+  static const String name = 'ThemeSettingsRoute';
+
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteThemeSettingsRoute();
+    },
+  );
+}
+
+/// generated route for
 /// [_i2.ProfilePhotoScreen]
 class ProfilePhotoScreen extends _i3.PageRouteInfo<void> {
   const ProfilePhotoScreen({List<_i3.PageRouteInfo>? children})
