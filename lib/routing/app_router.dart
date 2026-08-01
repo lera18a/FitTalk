@@ -17,7 +17,7 @@ class AppRouter extends RootStackRouter {
         // AutoRoute(page: VerificateOtpRoute.page, path: Routes.verificateOtp),
       ],
     ),
-    AutoRoute(path: Routes.setupProfile, page: ProfileSetupRoute.page),
+    AutoRoute(path: Routes.setupProfile, page: ProfileSetupWrapperRoute.page),
     AutoRoute(
       path: Routes.host,
       initial: true,
@@ -28,8 +28,13 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: HealthyRoute.page, path: Routes.healthy),
         AutoRoute(page: AchievementsRoute.page, path: Routes.achievements),
         AutoRoute(page: ChatsRoute.page, path: Routes.chats),
-        AutoRoute(page: SettingsRoute.page, path: '', initial: true),
+        AutoRoute(
+          page: SettingsProfileWrapperRoute.page,
+          path: '',
+          initial: true,
+        ),
       ],
     ),
+    AutoRoute(page: ProfilePhotoRoute.page, path: Routes.profilePhoto),
   ];
 }

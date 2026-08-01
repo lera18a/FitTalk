@@ -55,15 +55,14 @@ extension ProfileEventPatterns on ProfileEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FirstNameChanged value)?  firstNameChanged,TResult Function( _UsernameChanged value)?  usernameChanged,TResult Function( _AvatarChanged value)?  avatarChanged,TResult Function( _SaveProfileSubmitted value)?  saveProfileSubmitted,TResult Function( _Reset value)?  reset,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FirstNameChanged value)?  firstNameChanged,TResult Function( _UsernameChanged value)?  usernameChanged,TResult Function( _AvatarChanged value)?  avatarChanged,TResult Function( _SaveProfileSubmitted value)?  saveProfileSubmitted,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _FirstNameChanged() when firstNameChanged != null:
 return firstNameChanged(_that);case _UsernameChanged() when usernameChanged != null:
 return usernameChanged(_that);case _AvatarChanged() when avatarChanged != null:
 return avatarChanged(_that);case _SaveProfileSubmitted() when saveProfileSubmitted != null:
-return saveProfileSubmitted(_that);case _Reset() when reset != null:
-return reset(_that);case _:
+return saveProfileSubmitted(_that);case _:
   return orElse();
 
 }
@@ -81,15 +80,14 @@ return reset(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FirstNameChanged value)  firstNameChanged,required TResult Function( _UsernameChanged value)  usernameChanged,required TResult Function( _AvatarChanged value)  avatarChanged,required TResult Function( _SaveProfileSubmitted value)  saveProfileSubmitted,required TResult Function( _Reset value)  reset,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FirstNameChanged value)  firstNameChanged,required TResult Function( _UsernameChanged value)  usernameChanged,required TResult Function( _AvatarChanged value)  avatarChanged,required TResult Function( _SaveProfileSubmitted value)  saveProfileSubmitted,}){
 final _that = this;
 switch (_that) {
 case _FirstNameChanged():
 return firstNameChanged(_that);case _UsernameChanged():
 return usernameChanged(_that);case _AvatarChanged():
 return avatarChanged(_that);case _SaveProfileSubmitted():
-return saveProfileSubmitted(_that);case _Reset():
-return reset(_that);case _:
+return saveProfileSubmitted(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -106,15 +104,14 @@ return reset(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FirstNameChanged value)?  firstNameChanged,TResult? Function( _UsernameChanged value)?  usernameChanged,TResult? Function( _AvatarChanged value)?  avatarChanged,TResult? Function( _SaveProfileSubmitted value)?  saveProfileSubmitted,TResult? Function( _Reset value)?  reset,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FirstNameChanged value)?  firstNameChanged,TResult? Function( _UsernameChanged value)?  usernameChanged,TResult? Function( _AvatarChanged value)?  avatarChanged,TResult? Function( _SaveProfileSubmitted value)?  saveProfileSubmitted,}){
 final _that = this;
 switch (_that) {
 case _FirstNameChanged() when firstNameChanged != null:
 return firstNameChanged(_that);case _UsernameChanged() when usernameChanged != null:
 return usernameChanged(_that);case _AvatarChanged() when avatarChanged != null:
 return avatarChanged(_that);case _SaveProfileSubmitted() when saveProfileSubmitted != null:
-return saveProfileSubmitted(_that);case _Reset() when reset != null:
-return reset(_that);case _:
+return saveProfileSubmitted(_that);case _:
   return null;
 
 }
@@ -131,14 +128,13 @@ return reset(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String firstName)?  firstNameChanged,TResult Function( String username)?  usernameChanged,TResult Function( Uint8List? avatarBytes)?  avatarChanged,TResult Function()?  saveProfileSubmitted,TResult Function()?  reset,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String firstName)?  firstNameChanged,TResult Function( String username)?  usernameChanged,TResult Function( Uint8List? avatarBytes)?  avatarChanged,TResult Function()?  saveProfileSubmitted,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FirstNameChanged() when firstNameChanged != null:
 return firstNameChanged(_that.firstName);case _UsernameChanged() when usernameChanged != null:
 return usernameChanged(_that.username);case _AvatarChanged() when avatarChanged != null:
 return avatarChanged(_that.avatarBytes);case _SaveProfileSubmitted() when saveProfileSubmitted != null:
-return saveProfileSubmitted();case _Reset() when reset != null:
-return reset();case _:
+return saveProfileSubmitted();case _:
   return orElse();
 
 }
@@ -156,14 +152,13 @@ return reset();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String firstName)  firstNameChanged,required TResult Function( String username)  usernameChanged,required TResult Function( Uint8List? avatarBytes)  avatarChanged,required TResult Function()  saveProfileSubmitted,required TResult Function()  reset,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String firstName)  firstNameChanged,required TResult Function( String username)  usernameChanged,required TResult Function( Uint8List? avatarBytes)  avatarChanged,required TResult Function()  saveProfileSubmitted,}) {final _that = this;
 switch (_that) {
 case _FirstNameChanged():
 return firstNameChanged(_that.firstName);case _UsernameChanged():
 return usernameChanged(_that.username);case _AvatarChanged():
 return avatarChanged(_that.avatarBytes);case _SaveProfileSubmitted():
-return saveProfileSubmitted();case _Reset():
-return reset();case _:
+return saveProfileSubmitted();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -180,14 +175,13 @@ return reset();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String firstName)?  firstNameChanged,TResult? Function( String username)?  usernameChanged,TResult? Function( Uint8List? avatarBytes)?  avatarChanged,TResult? Function()?  saveProfileSubmitted,TResult? Function()?  reset,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String firstName)?  firstNameChanged,TResult? Function( String username)?  usernameChanged,TResult? Function( Uint8List? avatarBytes)?  avatarChanged,TResult? Function()?  saveProfileSubmitted,}) {final _that = this;
 switch (_that) {
 case _FirstNameChanged() when firstNameChanged != null:
 return firstNameChanged(_that.firstName);case _UsernameChanged() when usernameChanged != null:
 return usernameChanged(_that.username);case _AvatarChanged() when avatarChanged != null:
 return avatarChanged(_that.avatarBytes);case _SaveProfileSubmitted() when saveProfileSubmitted != null:
-return saveProfileSubmitted();case _Reset() when reset != null:
-return reset();case _:
+return saveProfileSubmitted();case _:
   return null;
 
 }
@@ -417,38 +411,6 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'ProfileEvent.saveProfileSubmitted()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _Reset implements ProfileEvent {
-  const _Reset();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Reset);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ProfileEvent.reset()';
 }
 
 

@@ -1,4 +1,4 @@
-import 'package:fit_talk/feature/settings/presentation/view/widgets/log_out_button.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/view/widgets/log_out_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomDialog extends StatelessWidget {

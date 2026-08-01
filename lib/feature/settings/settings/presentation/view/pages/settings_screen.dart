@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fit_talk/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
-import 'package:fit_talk/feature/settings/presentation/bloc/bloc/settings_profile_bloc.dart';
-import 'package:fit_talk/feature/settings/presentation/view/widgets/custom_dialog.dart';
-import 'package:fit_talk/feature/settings/presentation/view/widgets/custom_sliver_app_bar.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/bloc/bloc/settings_profile_bloc.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/view/widgets/custom_dialog.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/view/widgets/custom_sliver_app_bar.dart';
 import 'package:fit_talk/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

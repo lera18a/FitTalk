@@ -5,7 +5,6 @@ import 'package:fit_talk/core/widgets/f_t_agreement_text.dart';
 import 'package:fit_talk/core/widgets/f_t_text_form_field.dart';
 import 'package:fit_talk/feature/profile_setup/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:fit_talk/feature/profile_setup/presentation/view/widgets/avatar_picker.dart';
-import 'package:fit_talk/feature/profile_setup/presentation/view/widgets/form_text_field.dart';
 import 'package:fit_talk/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -3,11 +3,14 @@ import 'package:fit_talk/feature/%D1%81hat/chat_screen.dart';
 import 'package:fit_talk/feature/achivements/presentation/view/pages/achivements_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/login_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/register_screen.dart';
-import 'package:fit_talk/feature/auth/presentation/view/pages/settings_screen.dart';
+import 'package:fit_talk/feature/profile_setup/presentation/view/widgets/profile_setup_wrapper.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/view/pages/profile_photo_screen.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/view/pages/settings_screen.dart';
 import 'package:fit_talk/feature/friends/presentation/view/pages/friends_screen.dart';
 import 'package:fit_talk/feature/healthy/presentation/view/pages/healthy_screen.dart';
 import 'package:fit_talk/feature/home/home.dart';
 import 'package:fit_talk/feature/profile_setup/presentation/view/pages/profile_setup_screen.dart';
+import 'package:fit_talk/feature/settings/settings/presentation/view/widgets/settings_profile_wrapper.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -93,4 +96,25 @@ class AutoRouteChatsRoute extends StatelessWidget {
   const AutoRouteChatsRoute({super.key});
   @override
   Widget build(BuildContext context) => ChatScreen();
+}
+
+@RoutePage()
+class AutoRouteProfilePhotoRoute extends StatelessWidget {
+  const AutoRouteProfilePhotoRoute({super.key});
+  @override
+  Widget build(BuildContext context) => ProfilePhotoScreen();
+}
+
+@RoutePage()
+class AutoRouteProfileSetupWrapperRoute extends StatelessWidget {
+  const AutoRouteProfileSetupWrapperRoute({super.key});
+  @override
+  Widget build(BuildContext context) => ProfileSetupWrapper();
+}
+
+@RoutePage()
+class AutoRouteSettingsProfileWrapperRoute extends StatelessWidget {
+  const AutoRouteSettingsProfileWrapperRoute({super.key});
+  @override
+  Widget build(BuildContext context) => SettingsProfileWrapper();
 }

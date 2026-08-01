@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
       HealthyRoute(),
       AchievementsRoute(),
       ChatsRoute(),
-      SettingsRoute(),
+      SettingsProfileWrapperRoute(),
     ],
     builder: (context, child) {
       final tabsRouter = AutoTabsRouter.of(context);

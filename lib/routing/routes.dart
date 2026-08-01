@@ -9,5 +9,8 @@ abstract final class Routes {
   static const achievements = 'achivements';
   static const healthy = 'healthy';
   static const chats = 'chats';
+
   static const settings = 'settings';
+
+  static const profilePhoto = '/profile-photo';
 }
