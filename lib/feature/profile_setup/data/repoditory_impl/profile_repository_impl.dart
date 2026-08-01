@@ -49,7 +49,9 @@ class ProfileRepositoryImpl implements ProfileRepository {
           .upload(path, file, fileOptions: const FileOptions(upsert: true));
 
       // 3. Получаем публичную ссылку на загруженное изображение
-      final avatarUrl = _client.storage.from('avatars').getPublicUrl(path);
+      final publicUrl = _client.storage.from('avatars').getPublicUrl(path);
+
+      final avatarUrl = '$publicUrl?v=${DateTime.now().millisecondsSinceEpoch}';
 
       return Right(avatarUrl);
     } on StorageException catch (e) {

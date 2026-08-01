@@ -6,11 +6,13 @@ import 'package:image_picker/image_picker.dart';
 class AvatarPicker extends StatelessWidget {
   const AvatarPicker({
     super.key,
-    required this.imageBytes,
+    this.imageBytes,
+    this.imageUrl,
     required this.onImageSelected,
   });
 
   final Uint8List? imageBytes;
+  final String? imageUrl;
   final ValueChanged<Uint8List> onImageSelected;
 
   Future<void> _pickImage() async {
@@ -31,6 +33,14 @@ class AvatarPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider? imageProvider;
+
+    if (imageBytes != null) {
+      imageProvider = MemoryImage(imageBytes!);
+    } else if (imageUrl != null && imageUrl!.isNotEmpty) {
+      imageProvider = NetworkImage(imageUrl!);
+    }
+
     return Center(
       child: InkWell(
         onTap: _pickImage,
@@ -39,20 +49,15 @@ class AvatarPicker extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 65,
-              backgroundImage: imageBytes != null
-                  ? MemoryImage(imageBytes!)
-                  : null,
-              child: imageBytes == null
+              backgroundImage: imageProvider,
+              child: imageProvider == null
                   ? const Icon(Icons.person, size: 64)
                   : null,
             ),
-            Positioned(
+            const Positioned(
               right: 0,
               bottom: 0,
-              child: CircleAvatar(
-                radius: 20,
-                child: const Icon(Icons.camera_alt),
-              ),
+              child: CircleAvatar(radius: 20, child: Icon(Icons.camera_alt)),
             ),
           ],
         ),
