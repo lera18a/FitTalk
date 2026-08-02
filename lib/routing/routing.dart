@@ -3,6 +3,7 @@ import 'package:fit_talk/feature/%D1%81hat/chat_screen.dart';
 import 'package:fit_talk/feature/achivements/presentation/view/pages/achivements_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/login_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/register_screen.dart';
+import 'package:fit_talk/feature/friends/presentation/view/pages/profile_info_screen.dart';
 import 'package:fit_talk/feature/profile_setup/presentation/view/widgets/profile_setup_wrapper.dart';
 import 'package:fit_talk/feature/settings/settings/presentation/view/pages/profile_photo_screen.dart';
 import 'package:fit_talk/feature/settings/settings/presentation/view/pages/settings_screen.dart';
@@ -125,4 +126,12 @@ class AutoRouteThemeSettingsRoute extends StatelessWidget {
   const AutoRouteThemeSettingsRoute({super.key});
   @override
   Widget build(BuildContext context) => ThemeSettingsScreen();
+}
+
+@RoutePage()
+class AutoRouteProfileInfoRoute extends StatelessWidget {
+  const AutoRouteProfileInfoRoute({super.key, required this.userId});
+  final String userId;
+  @override
+  Widget build(BuildContext context) => ProfileInfoScreen(userId: userId);
 }

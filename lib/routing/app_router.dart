@@ -41,5 +41,6 @@ class AppRouter extends RootStackRouter {
     ),
 
     AutoRoute(page: ThemeSettingsRoute.page, path: Routes.themeSettings),
+    AutoRoute(page: ProfileInfoRoute.page, path: Routes.profileInfo),
   ];
 }

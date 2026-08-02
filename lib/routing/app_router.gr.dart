@@ -13,6 +13,7 @@ import 'package:auto_route/auto_route.dart' as _i3;
 import 'package:fit_talk/feature/settings/settings/presentation/view/pages/profile_photo_screen.dart'
     as _i2;
 import 'package:fit_talk/routing/routing.dart' as _i1;
+import 'package:flutter/material.dart' as _i4;
 
 /// generated route for
 /// [_i1.AutoRouteAchievementsRoute]
@@ -124,6 +125,53 @@ class LoginRoute extends _i3.PageRouteInfo<void> {
       return const _i1.AutoRouteLoginRoute();
     },
   );
+}
+
+/// generated route for
+/// [_i1.AutoRouteProfileInfoRoute]
+class ProfileInfoRoute extends _i3.PageRouteInfo<ProfileInfoRouteArgs> {
+  ProfileInfoRoute({
+    _i4.Key? key,
+    required String userId,
+    List<_i3.PageRouteInfo>? children,
+  }) : super(
+         ProfileInfoRoute.name,
+         args: ProfileInfoRouteArgs(key: key, userId: userId),
+         initialChildren: children,
+       );
+
+  static const String name = 'ProfileInfoRoute';
+
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProfileInfoRouteArgs>();
+      return _i1.AutoRouteProfileInfoRoute(key: args.key, userId: args.userId);
+    },
+  );
+}
+
+class ProfileInfoRouteArgs {
+  const ProfileInfoRouteArgs({this.key, required this.userId});
+
+  final _i4.Key? key;
+
+  final String userId;
+
+  @override
+  String toString() {
+    return 'ProfileInfoRouteArgs{key: $key, userId: $userId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ProfileInfoRouteArgs) return false;
+    return key == other.key && userId == other.userId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ userId.hashCode;
 }
 
 /// generated route for

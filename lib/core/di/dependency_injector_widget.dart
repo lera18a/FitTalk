@@ -4,6 +4,9 @@ import 'package:fit_talk/feature/auth/data/datasources/supabase_datasource.dart'
 import 'package:fit_talk/feature/auth/domain/repository/auth_repository.dart';
 import 'package:fit_talk/feature/auth/domain/use_cases/email_validator.dart';
 import 'package:fit_talk/feature/auth/domain/use_cases/password_validator.dart';
+import 'package:fit_talk/feature/friends/data/datasource/friends_datasource.dart';
+import 'package:fit_talk/feature/friends/data/repository_impl/friends_repository_impl.dart';
+import 'package:fit_talk/feature/friends/domain/repository/friends_repository.dart';
 import 'package:fit_talk/feature/profile_setup/data/datasource/supabase_datasource_profile.dart';
 import 'package:fit_talk/feature/profile_setup/data/repoditory_impl/profile_repository_impl.dart';
 import 'package:fit_talk/feature/profile_setup/domain/repository/profile_repository.dart';
@@ -46,6 +49,17 @@ class _DependencyInjectorWidgetState extends State<DependencyInjectorWidget> {
         Provider<ProfileRepository>(
           create: (context) =>
               ProfileRepositoryImpl(context.read<SupabaseDatasourceProfile>()),
+        ),
+
+        Provider(
+          create: (context) =>
+              FriendsDatasource(context.read<SupabaseClient>()),
+        ),
+        Provider<FriendsRepository>(
+          create: (context) => FriendsRepositoryImpl(
+            context.read<FriendsDatasource>(),
+            context.read<SupabaseClient>(),
+          ),
         ),
       ],
       child: widget._child,
