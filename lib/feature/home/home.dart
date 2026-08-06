@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       FriendsRoute(),
       HealthyRoute(),
       AchievementsRoute(),
-      ChatsRoute(),
+      ChatsListRoute(),
       SettingsProfileWrapperRoute(),
     ],
     builder: (context, child) {

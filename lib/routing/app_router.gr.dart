@@ -48,17 +48,64 @@ class AuthRoute extends _i3.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.AutoRouteChatsRoute]
-class ChatsRoute extends _i3.PageRouteInfo<void> {
-  const ChatsRoute({List<_i3.PageRouteInfo>? children})
-    : super(ChatsRoute.name, initialChildren: children);
+/// [_i1.AutoRouteChatRoute]
+class ChatRoute extends _i3.PageRouteInfo<ChatRouteArgs> {
+  ChatRoute({
+    _i4.Key? key,
+    required String chatId,
+    List<_i3.PageRouteInfo>? children,
+  }) : super(
+         ChatRoute.name,
+         args: ChatRouteArgs(key: key, chatId: chatId),
+         initialChildren: children,
+       );
 
-  static const String name = 'ChatsRoute';
+  static const String name = 'ChatRoute';
 
   static _i3.PageInfo page = _i3.PageInfo(
     name,
     builder: (data) {
-      return const _i1.AutoRouteChatsRoute();
+      final args = data.argsAs<ChatRouteArgs>();
+      return _i1.AutoRouteChatRoute(key: args.key, chatId: args.chatId);
+    },
+  );
+}
+
+class ChatRouteArgs {
+  const ChatRouteArgs({this.key, required this.chatId});
+
+  final _i4.Key? key;
+
+  final String chatId;
+
+  @override
+  String toString() {
+    return 'ChatRouteArgs{key: $key, chatId: $chatId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ChatRouteArgs) return false;
+    return key == other.key && chatId == other.chatId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ chatId.hashCode;
+}
+
+/// generated route for
+/// [_i1.AutoRouteChatsListRoute]
+class ChatsListRoute extends _i3.PageRouteInfo<void> {
+  const ChatsListRoute({List<_i3.PageRouteInfo>? children})
+    : super(ChatsListRoute.name, initialChildren: children);
+
+  static const String name = 'ChatsListRoute';
+
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AutoRouteChatsListRoute();
     },
   );
 }

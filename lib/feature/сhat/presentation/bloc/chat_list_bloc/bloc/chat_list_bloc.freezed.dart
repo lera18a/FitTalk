@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'settings_profile_bloc.dart';
+part of 'chat_list_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'settings_profile_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$SettingsProfileEvent {
+mixin _$ChatListEvent {
 
 
 
@@ -20,7 +20,7 @@ mixin _$SettingsProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsProfileEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatListEvent);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SettingsProfileEvent()';
+  return 'ChatListEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $SettingsProfileEventCopyWith<$Res>  {
-$SettingsProfileEventCopyWith(SettingsProfileEvent _, $Res Function(SettingsProfileEvent) __);
+class $ChatListEventCopyWith<$Res>  {
+$ChatListEventCopyWith(ChatListEvent _, $Res Function(ChatListEvent) __);
 }
 
 
-/// Adds pattern-matching-related methods to [SettingsProfileEvent].
-extension SettingsProfileEventPatterns on SettingsProfileEvent {
+/// Adds pattern-matching-related methods to [ChatListEvent].
+extension ChatListEventPatterns on ChatListEvent {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -55,12 +55,13 @@ extension SettingsProfileEventPatterns on SettingsProfileEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _LoadCurrentProfile value)?  loadCurrentProfile,TResult Function( _UpdateAvatar value)?  updateAvatar,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Load value)?  load,TResult Function( _Refresh value)?  refresh,TResult Function( _MarkAsRead value)?  markAsRead,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _LoadCurrentProfile() when loadCurrentProfile != null:
-return loadCurrentProfile(_that);case _UpdateAvatar() when updateAvatar != null:
-return updateAvatar(_that);case _:
+case _Load() when load != null:
+return load(_that);case _Refresh() when refresh != null:
+return refresh(_that);case _MarkAsRead() when markAsRead != null:
+return markAsRead(_that);case _:
   return orElse();
 
 }
@@ -78,12 +79,13 @@ return updateAvatar(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _LoadCurrentProfile value)  loadCurrentProfile,required TResult Function( _UpdateAvatar value)  updateAvatar,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Load value)  load,required TResult Function( _Refresh value)  refresh,required TResult Function( _MarkAsRead value)  markAsRead,}){
 final _that = this;
 switch (_that) {
-case _LoadCurrentProfile():
-return loadCurrentProfile(_that);case _UpdateAvatar():
-return updateAvatar(_that);case _:
+case _Load():
+return load(_that);case _Refresh():
+return refresh(_that);case _MarkAsRead():
+return markAsRead(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +102,13 @@ return updateAvatar(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _LoadCurrentProfile value)?  loadCurrentProfile,TResult? Function( _UpdateAvatar value)?  updateAvatar,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Load value)?  load,TResult? Function( _Refresh value)?  refresh,TResult? Function( _MarkAsRead value)?  markAsRead,}){
 final _that = this;
 switch (_that) {
-case _LoadCurrentProfile() when loadCurrentProfile != null:
-return loadCurrentProfile(_that);case _UpdateAvatar() when updateAvatar != null:
-return updateAvatar(_that);case _:
+case _Load() when load != null:
+return load(_that);case _Refresh() when refresh != null:
+return refresh(_that);case _MarkAsRead() when markAsRead != null:
+return markAsRead(_that);case _:
   return null;
 
 }
@@ -122,11 +125,12 @@ return updateAvatar(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loadCurrentProfile,TResult Function( File file)?  updateAvatar,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  load,TResult Function()?  refresh,TResult Function( String chatId)?  markAsRead,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _LoadCurrentProfile() when loadCurrentProfile != null:
-return loadCurrentProfile();case _UpdateAvatar() when updateAvatar != null:
-return updateAvatar(_that.file);case _:
+case _Load() when load != null:
+return load();case _Refresh() when refresh != null:
+return refresh();case _MarkAsRead() when markAsRead != null:
+return markAsRead(_that.chatId);case _:
   return orElse();
 
 }
@@ -144,11 +148,12 @@ return updateAvatar(_that.file);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loadCurrentProfile,required TResult Function( File file)  updateAvatar,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  load,required TResult Function()  refresh,required TResult Function( String chatId)  markAsRead,}) {final _that = this;
 switch (_that) {
-case _LoadCurrentProfile():
-return loadCurrentProfile();case _UpdateAvatar():
-return updateAvatar(_that.file);case _:
+case _Load():
+return load();case _Refresh():
+return refresh();case _MarkAsRead():
+return markAsRead(_that.chatId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +170,12 @@ return updateAvatar(_that.file);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loadCurrentProfile,TResult? Function( File file)?  updateAvatar,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  load,TResult? Function()?  refresh,TResult? Function( String chatId)?  markAsRead,}) {final _that = this;
 switch (_that) {
-case _LoadCurrentProfile() when loadCurrentProfile != null:
-return loadCurrentProfile();case _UpdateAvatar() when updateAvatar != null:
-return updateAvatar(_that.file);case _:
+case _Load() when load != null:
+return load();case _Refresh() when refresh != null:
+return refresh();case _MarkAsRead() when markAsRead != null:
+return markAsRead(_that.chatId);case _:
   return null;
 
 }
@@ -180,8 +186,8 @@ return updateAvatar(_that.file);case _:
 /// @nodoc
 
 
-class _LoadCurrentProfile implements SettingsProfileEvent {
-  const _LoadCurrentProfile();
+class _Load implements ChatListEvent {
+  const _Load();
   
 
 
@@ -191,7 +197,7 @@ class _LoadCurrentProfile implements SettingsProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoadCurrentProfile);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Load);
 }
 
 
@@ -200,7 +206,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SettingsProfileEvent.loadCurrentProfile()';
+  return 'ChatListEvent.load()';
 }
 
 
@@ -212,43 +218,75 @@ String toString() {
 /// @nodoc
 
 
-class _UpdateAvatar implements SettingsProfileEvent {
-  const _UpdateAvatar(this.file);
+class _Refresh implements ChatListEvent {
+  const _Refresh();
   
 
- final  File file;
 
-/// Create a copy of SettingsProfileEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$UpdateAvatarCopyWith<_UpdateAvatar> get copyWith => __$UpdateAvatarCopyWithImpl<_UpdateAvatar>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateAvatar&&(identical(other.file, file) || other.file == file));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Refresh);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SettingsProfileEvent.updateAvatar(file: $file)';
+  return 'ChatListEvent.refresh()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _MarkAsRead implements ChatListEvent {
+  const _MarkAsRead(this.chatId);
+  
+
+ final  String chatId;
+
+/// Create a copy of ChatListEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MarkAsReadCopyWith<_MarkAsRead> get copyWith => __$MarkAsReadCopyWithImpl<_MarkAsRead>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MarkAsRead&&(identical(other.chatId, chatId) || other.chatId == chatId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,chatId);
+
+@override
+String toString() {
+  return 'ChatListEvent.markAsRead(chatId: $chatId)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$UpdateAvatarCopyWith<$Res> implements $SettingsProfileEventCopyWith<$Res> {
-  factory _$UpdateAvatarCopyWith(_UpdateAvatar value, $Res Function(_UpdateAvatar) _then) = __$UpdateAvatarCopyWithImpl;
+abstract mixin class _$MarkAsReadCopyWith<$Res> implements $ChatListEventCopyWith<$Res> {
+  factory _$MarkAsReadCopyWith(_MarkAsRead value, $Res Function(_MarkAsRead) _then) = __$MarkAsReadCopyWithImpl;
 @useResult
 $Res call({
- File file
+ String chatId
 });
 
 
@@ -256,19 +294,19 @@ $Res call({
 
 }
 /// @nodoc
-class __$UpdateAvatarCopyWithImpl<$Res>
-    implements _$UpdateAvatarCopyWith<$Res> {
-  __$UpdateAvatarCopyWithImpl(this._self, this._then);
+class __$MarkAsReadCopyWithImpl<$Res>
+    implements _$MarkAsReadCopyWith<$Res> {
+  __$MarkAsReadCopyWithImpl(this._self, this._then);
 
-  final _UpdateAvatar _self;
-  final $Res Function(_UpdateAvatar) _then;
+  final _MarkAsRead _self;
+  final $Res Function(_MarkAsRead) _then;
 
-/// Create a copy of SettingsProfileEvent
+/// Create a copy of ChatListEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? file = null,}) {
-  return _then(_UpdateAvatar(
-null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as File,
+@pragma('vm:prefer-inline') $Res call({Object? chatId = null,}) {
+  return _then(_MarkAsRead(
+null == chatId ? _self.chatId : chatId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -276,7 +314,7 @@ as File,
 }
 
 /// @nodoc
-mixin _$SettingsProfileState {
+mixin _$ChatListState {
 
 
 
@@ -284,7 +322,7 @@ mixin _$SettingsProfileState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsProfileState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatListState);
 }
 
 
@@ -293,20 +331,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SettingsProfileState()';
+  return 'ChatListState()';
 }
 
 
 }
 
 /// @nodoc
-class $SettingsProfileStateCopyWith<$Res>  {
-$SettingsProfileStateCopyWith(SettingsProfileState _, $Res Function(SettingsProfileState) __);
+class $ChatListStateCopyWith<$Res>  {
+$ChatListStateCopyWith(ChatListState _, $Res Function(ChatListState) __);
 }
 
 
-/// Adds pattern-matching-related methods to [SettingsProfileState].
-extension SettingsProfileStatePatterns on SettingsProfileState {
+/// Adds pattern-matching-related methods to [ChatListState].
+extension ChatListStatePatterns on ChatListState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -319,11 +357,10 @@ extension SettingsProfileStatePatterns on SettingsProfileState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Loaded value)?  loaded,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  loading,TResult Function( _Loaded value)?  loaded,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
+case _Initial() when loading != null:
 return loading(_that);case _Loaded() when loaded != null:
 return loaded(_that);case _Failure() when failure != null:
 return failure(_that);case _:
@@ -344,11 +381,10 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Loaded value)  loaded,required TResult Function( _Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  loading,required TResult Function( _Loaded value)  loaded,required TResult Function( _Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
-return initial(_that);case _Loading():
 return loading(_that);case _Loaded():
 return loaded(_that);case _Failure():
 return failure(_that);case _:
@@ -368,11 +404,10 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Loaded value)?  loaded,TResult? Function( _Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  loading,TResult? Function( _Loaded value)?  loaded,TResult? Function( _Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
+case _Initial() when loading != null:
 return loading(_that);case _Loaded() when loaded != null:
 return loaded(_that);case _Failure() when failure != null:
 return failure(_that);case _:
@@ -392,12 +427,11 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( ProfileModel profile)?  loaded,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function( List<ChatPreviewModel> chats)?  loaded,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
+case _Initial() when loading != null:
 return loading();case _Loaded() when loaded != null:
-return loaded(_that.profile);case _Failure() when failure != null:
+return loaded(_that.chats);case _Failure() when failure != null:
 return failure(_that.message);case _:
   return orElse();
 
@@ -416,12 +450,11 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( ProfileModel profile)  loaded,required TResult Function( String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function( List<ChatPreviewModel> chats)  loaded,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
-return initial();case _Loading():
 return loading();case _Loaded():
-return loaded(_that.profile);case _Failure():
+return loaded(_that.chats);case _Failure():
 return failure(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -439,12 +472,11 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( ProfileModel profile)?  loaded,TResult? Function( String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function( List<ChatPreviewModel> chats)?  loaded,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
+case _Initial() when loading != null:
 return loading();case _Loaded() when loaded != null:
-return loaded(_that.profile);case _Failure() when failure != null:
+return loaded(_that.chats);case _Failure() when failure != null:
 return failure(_that.message);case _:
   return null;
 
@@ -456,7 +488,7 @@ return failure(_that.message);case _:
 /// @nodoc
 
 
-class _Initial implements SettingsProfileState {
+class _Initial implements ChatListState {
   const _Initial();
   
 
@@ -476,7 +508,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SettingsProfileState.initial()';
+  return 'ChatListState.loading()';
 }
 
 
@@ -488,45 +520,19 @@ String toString() {
 /// @nodoc
 
 
-class _Loading implements SettingsProfileState {
-  const _Loading();
+class _Loaded implements ChatListState {
+  const _Loaded(final  List<ChatPreviewModel> chats): _chats = chats;
   
 
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+ final  List<ChatPreviewModel> _chats;
+ List<ChatPreviewModel> get chats {
+  if (_chats is EqualUnmodifiableListView) return _chats;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_chats);
 }
 
 
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'SettingsProfileState.loading()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _Loaded implements SettingsProfileState {
-  const _Loaded({required this.profile});
-  
-
- final  ProfileModel profile;
-
-/// Create a copy of SettingsProfileState
+/// Create a copy of ChatListState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -536,27 +542,27 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.profile, profile) || other.profile == profile));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._chats, _chats));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,profile);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_chats));
 
 @override
 String toString() {
-  return 'SettingsProfileState.loaded(profile: $profile)';
+  return 'ChatListState.loaded(chats: $chats)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$LoadedCopyWith<$Res> implements $SettingsProfileStateCopyWith<$Res> {
+abstract mixin class _$LoadedCopyWith<$Res> implements $ChatListStateCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- ProfileModel profile
+ List<ChatPreviewModel> chats
 });
 
 
@@ -571,12 +577,12 @@ class __$LoadedCopyWithImpl<$Res>
   final _Loaded _self;
   final $Res Function(_Loaded) _then;
 
-/// Create a copy of SettingsProfileState
+/// Create a copy of ChatListState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? profile = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? chats = null,}) {
   return _then(_Loaded(
-profile: null == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
-as ProfileModel,
+null == chats ? _self._chats : chats // ignore: cast_nullable_to_non_nullable
+as List<ChatPreviewModel>,
   ));
 }
 
@@ -586,13 +592,13 @@ as ProfileModel,
 /// @nodoc
 
 
-class _Failure implements SettingsProfileState {
-  const _Failure({required this.message});
+class _Failure implements ChatListState {
+  const _Failure(this.message);
   
 
  final  String message;
 
-/// Create a copy of SettingsProfileState
+/// Create a copy of ChatListState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -611,14 +617,14 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'SettingsProfileState.failure(message: $message)';
+  return 'ChatListState.failure(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$FailureCopyWith<$Res> implements $SettingsProfileStateCopyWith<$Res> {
+abstract mixin class _$FailureCopyWith<$Res> implements $ChatListStateCopyWith<$Res> {
   factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) = __$FailureCopyWithImpl;
 @useResult
 $Res call({
@@ -637,11 +643,11 @@ class __$FailureCopyWithImpl<$Res>
   final _Failure _self;
   final $Res Function(_Failure) _then;
 
-/// Create a copy of SettingsProfileState
+/// Create a copy of ChatListState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(_Failure(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

@@ -1,4 +1,7 @@
 import 'package:fit_talk/app/app_lifecicle.dart';
+import 'package:fit_talk/feature/%D1%81hat/data/datasource/chat_datasource.dart';
+import 'package:fit_talk/feature/%D1%81hat/data/repository_impl/chat_repository_impl.dart';
+import 'package:fit_talk/feature/%D1%81hat/domain/repository/chat_repository.dart';
 import 'package:fit_talk/feature/auth/data/repository_impl/auth_repository_impl.dart';
 import 'package:fit_talk/feature/auth/data/datasources/supabase_datasource.dart';
 import 'package:fit_talk/feature/auth/domain/repository/auth_repository.dart';
@@ -60,6 +63,13 @@ class _DependencyInjectorWidgetState extends State<DependencyInjectorWidget> {
             context.read<FriendsDatasource>(),
             context.read<SupabaseClient>(),
           ),
+        ),
+        Provider(
+          create: (context) => ChatDatasource(context.read<SupabaseClient>()),
+        ),
+        Provider<ChatRepository>(
+          create: (context) =>
+              ChatRepositoryImpl(context.read<ChatDatasource>()),
         ),
       ],
       child: widget._child,

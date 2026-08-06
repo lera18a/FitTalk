@@ -15,5 +15,7 @@ abstract final class Routes {
   static const profilePhoto = 'profile-photo';
   static const themeSettings = '/theme-settings';
 
-  static const profileInfo = '/profile-info/';
+  static const profileInfo = '/profile-info';
+
+  static const chat = '/chat';
 }

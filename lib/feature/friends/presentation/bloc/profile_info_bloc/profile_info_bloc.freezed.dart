@@ -14,30 +14,61 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileInfoEvent {
 
-
+ String get userId;
+/// Create a copy of ProfileInfoEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ProfileInfoEventCopyWith<ProfileInfoEvent> get copyWith => _$ProfileInfoEventCopyWithImpl<ProfileInfoEvent>(this as ProfileInfoEvent, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileInfoEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileInfoEvent&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,userId);
 
 @override
 String toString() {
-  return 'ProfileInfoEvent()';
+  return 'ProfileInfoEvent(userId: $userId)';
 }
 
 
 }
 
 /// @nodoc
-class $ProfileInfoEventCopyWith<$Res>  {
-$ProfileInfoEventCopyWith(ProfileInfoEvent _, $Res Function(ProfileInfoEvent) __);
+abstract mixin class $ProfileInfoEventCopyWith<$Res>  {
+  factory $ProfileInfoEventCopyWith(ProfileInfoEvent value, $Res Function(ProfileInfoEvent) _then) = _$ProfileInfoEventCopyWithImpl;
+@useResult
+$Res call({
+ String userId
+});
+
+
+
+
+}
+/// @nodoc
+class _$ProfileInfoEventCopyWithImpl<$Res>
+    implements $ProfileInfoEventCopyWith<$Res> {
+  _$ProfileInfoEventCopyWithImpl(this._self, this._then);
+
+  final ProfileInfoEvent _self;
+  final $Res Function(ProfileInfoEvent) _then;
+
+/// Create a copy of ProfileInfoEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,}) {
+  return _then(_self.copyWith(
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
 }
 
 
@@ -55,12 +86,11 @@ extension ProfileInfoEventPatterns on ProfileInfoEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _LoadProfile value)?  loadProfile,TResult Function( _MessagePressed value)?  messagePressed,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _LoadProfile value)?  loadProfile,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _LoadProfile() when loadProfile != null:
-return loadProfile(_that);case _MessagePressed() when messagePressed != null:
-return messagePressed(_that);case _:
+return loadProfile(_that);case _:
   return orElse();
 
 }
@@ -78,12 +108,11 @@ return messagePressed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _LoadProfile value)  loadProfile,required TResult Function( _MessagePressed value)  messagePressed,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _LoadProfile value)  loadProfile,}){
 final _that = this;
 switch (_that) {
 case _LoadProfile():
-return loadProfile(_that);case _MessagePressed():
-return messagePressed(_that);case _:
+return loadProfile(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +129,11 @@ return messagePressed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _LoadProfile value)?  loadProfile,TResult? Function( _MessagePressed value)?  messagePressed,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _LoadProfile value)?  loadProfile,}){
 final _that = this;
 switch (_that) {
 case _LoadProfile() when loadProfile != null:
-return loadProfile(_that);case _MessagePressed() when messagePressed != null:
-return messagePressed(_that);case _:
+return loadProfile(_that);case _:
   return null;
 
 }
@@ -122,11 +150,10 @@ return messagePressed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String userId)?  loadProfile,TResult Function()?  messagePressed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String userId)?  loadProfile,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoadProfile() when loadProfile != null:
-return loadProfile(_that.userId);case _MessagePressed() when messagePressed != null:
-return messagePressed();case _:
+return loadProfile(_that.userId);case _:
   return orElse();
 
 }
@@ -144,11 +171,10 @@ return messagePressed();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String userId)  loadProfile,required TResult Function()  messagePressed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String userId)  loadProfile,}) {final _that = this;
 switch (_that) {
 case _LoadProfile():
-return loadProfile(_that.userId);case _MessagePressed():
-return messagePressed();case _:
+return loadProfile(_that.userId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +191,10 @@ return messagePressed();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String userId)?  loadProfile,TResult? Function()?  messagePressed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String userId)?  loadProfile,}) {final _that = this;
 switch (_that) {
 case _LoadProfile() when loadProfile != null:
-return loadProfile(_that.userId);case _MessagePressed() when messagePressed != null:
-return messagePressed();case _:
+return loadProfile(_that.userId);case _:
   return null;
 
 }
@@ -184,11 +209,11 @@ class _LoadProfile implements ProfileInfoEvent {
   const _LoadProfile(this.userId);
   
 
- final  String userId;
+@override final  String userId;
 
 /// Create a copy of ProfileInfoEvent
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$LoadProfileCopyWith<_LoadProfile> get copyWith => __$LoadProfileCopyWithImpl<_LoadProfile>(this, _$identity);
 
@@ -214,7 +239,7 @@ String toString() {
 /// @nodoc
 abstract mixin class _$LoadProfileCopyWith<$Res> implements $ProfileInfoEventCopyWith<$Res> {
   factory _$LoadProfileCopyWith(_LoadProfile value, $Res Function(_LoadProfile) _then) = __$LoadProfileCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
  String userId
 });
@@ -233,7 +258,7 @@ class __$LoadProfileCopyWithImpl<$Res>
 
 /// Create a copy of ProfileInfoEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? userId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,}) {
   return _then(_LoadProfile(
 null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
@@ -242,38 +267,6 @@ as String,
 
 
 }
-
-/// @nodoc
-
-
-class _MessagePressed implements ProfileInfoEvent {
-  const _MessagePressed();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MessagePressed);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ProfileInfoEvent.messagePressed()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
 mixin _$ProfileInfoState {

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fit_talk/feature/%D1%81hat/chat_screen.dart';
+import 'package:fit_talk/feature/%D1%81hat/presentation/view/chat_screen.dart';
+import 'package:fit_talk/feature/%D1%81hat/presentation/view/chats_list_screen.dart';
 import 'package:fit_talk/feature/achivements/presentation/view/pages/achivements_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/login_screen.dart';
 import 'package:fit_talk/feature/auth/presentation/view/pages/register_screen.dart';
@@ -93,12 +94,12 @@ class AutoRouteAchievementsRoute extends StatelessWidget {
   Widget build(BuildContext context) => AchivementsScreen();
 }
 
-@RoutePage()
-class AutoRouteChatsRoute extends StatelessWidget {
-  const AutoRouteChatsRoute({super.key});
-  @override
-  Widget build(BuildContext context) => ChatScreen();
-}
+// @RoutePage()
+// class AutoRouteChatsRoute extends StatelessWidget {
+//   const AutoRouteChatsRoute({super.key});
+//   @override
+//   Widget build(BuildContext context) => ChatScreen(chatId: '');
+// }
 
 @RoutePage()
 class AutoRouteProfilePhotoRoute extends StatelessWidget {
@@ -134,4 +135,20 @@ class AutoRouteProfileInfoRoute extends StatelessWidget {
   final String userId;
   @override
   Widget build(BuildContext context) => ProfileInfoScreen(userId: userId);
+}
+
+@RoutePage()
+class AutoRouteChatRoute extends StatelessWidget {
+  const AutoRouteChatRoute({super.key, required this.chatId});
+  final String chatId;
+  @override
+  Widget build(BuildContext context) => ChatScreen(chatId: chatId);
+}
+
+@RoutePage()
+class AutoRouteChatsListRoute extends StatelessWidget {
+  const AutoRouteChatsListRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) => ChatsListScreen();
 }

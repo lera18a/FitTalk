@@ -15,6 +15,7 @@ class ProfileInfoBloc extends Bloc<ProfileInfoEvent, ProfileInfoState> {
       super(ProfileInfoState.initial()) {
     on<_LoadProfile>(_onLoadProfile);
   }
+
   Future<void> _onLoadProfile(
     _LoadProfile event,
     Emitter<ProfileInfoState> emit,

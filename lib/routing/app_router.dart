@@ -27,7 +27,13 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: FriendsRoute.page, path: Routes.friends),
         AutoRoute(page: HealthyRoute.page, path: Routes.healthy),
         AutoRoute(page: AchievementsRoute.page, path: Routes.achievements),
-        AutoRoute(page: ChatsRoute.page, path: Routes.chats),
+
+        // ChatRoute(chatId: chatId),
+        AutoRoute(
+          page: ChatsListRoute.page,
+          path: Routes.chats,
+          children: [AutoRoute(page: ChatRoute.page, path: '', initial: true)],
+        ),
         AutoRoute(
           page: SettingsProfileWrapperRoute.page,
           path: '',
@@ -39,6 +45,7 @@ class AppRouter extends RootStackRouter {
         ),
       ],
     ),
+    AutoRoute(page: ChatRoute.page, path: Routes.chat),
 
     AutoRoute(page: ThemeSettingsRoute.page, path: Routes.themeSettings),
     AutoRoute(page: ProfileInfoRoute.page, path: Routes.profileInfo),
