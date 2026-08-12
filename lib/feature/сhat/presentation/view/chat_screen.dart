@@ -1,7 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fit_talk/core/widgets/online_status_indicator.dart';
+import 'package:fit_talk/core/services/status_realtime_service.dart';
 import 'package:fit_talk/feature/сhat/presentation/bloc/bloc/chat_bloc.dart';
 import 'package:fit_talk/feature/сhat/domain/repository/chat_repository.dart';
 import 'package:fit_talk/feature/friends/domain/model/message_model.dart';
@@ -25,6 +28,7 @@ class ChatScreen extends StatelessWidget {
 
 class _ChatView extends StatefulWidget {
   const _ChatView({required this.chatId, required this.currentUserId});
+
   final String chatId;
   final String currentUserId;
 
@@ -35,12 +39,91 @@ class _ChatView extends StatefulWidget {
 class _ChatViewState extends State<_ChatView> {
   final _controller = TextEditingController();
   final _scrollController = ScrollController();
-  bool _hasLoadedMessages = false;
+
+  // Для статуса онлайн
+  DateTime? _partnerLastSeen;
+  String _partnerName = 'Диалог';
+  String? _partnerId;
+  StreamSubscription? _statusSubscription;
+  Timer? _statusRefreshTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPartnerInfo();
+
+    // Обновляем таймер каждые 15 секунд
+    _statusRefreshTimer = Timer.periodic(const Duration(seconds: 15), (_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  Future<void> _loadPartnerInfo() async {
+    try {
+      debugPrint(
+        '🔎 [ChatScreen] Запрос партнера через RPC для chatId: ${widget.chatId}',
+      );
+
+      final response = await Supabase.instance.client.rpc(
+        'get_chat_partner_info',
+        params: {'p_chat_id': widget.chatId},
+      );
+
+      if (response == null || (response as List).isEmpty) {
+        debugPrint('⚠️ [ChatScreen] Партнер не найден');
+        return;
+      }
+
+      final data = (response as List).first as Map<String, dynamic>;
+      final partnerId = data['partner_id'] as String;
+      final partnerName = data['partner_name'] as String? ?? 'Диалог';
+      final rawLastSeen = data['partner_last_seen'];
+      final parsedLastSeen = rawLastSeen != null
+          ? DateTime.parse(rawLastSeen.toString())
+          : null;
+
+      debugPrint(
+        '✅ [ChatScreen] УСПЕХ! Партнер: $partnerName, lastSeen: $parsedLastSeen',
+      );
+
+      if (mounted) {
+        setState(() {
+          _partnerId = partnerId;
+          _partnerName = partnerName;
+          _partnerLastSeen = parsedLastSeen;
+        });
+      }
+
+      // Подписываемся на мгновенные Realtime изменения статуса
+      _subscribeToStatus(partnerId);
+    } catch (e, stackTrace) {
+      debugPrint('💥 [ChatScreen] Ошибка RPC: $e');
+      debugPrint('StackTrace: $stackTrace');
+    }
+  }
+
+  void _subscribeToStatus(String partnerId) {
+    _statusSubscription?.cancel();
+
+    _statusSubscription = StatusRealtimeService().subscribeToUserStatus(
+      userId: partnerId,
+      onStatusChanged: (lastSeen) {
+        debugPrint('🔔 [ChatScreen] Realtime статус изменился: $lastSeen');
+        if (mounted) {
+          setState(() {
+            _partnerLastSeen = lastSeen;
+          });
+        }
+      },
+    );
+  }
 
   @override
   void dispose() {
     _controller.dispose();
     _scrollController.dispose();
+    _statusSubscription?.cancel();
+    _statusRefreshTimer?.cancel();
     super.dispose();
   }
 
@@ -55,7 +138,7 @@ class _ChatViewState extends State<_ChatView> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent, // ← низ списка
+          _scrollController.position.maxScrollExtent,
           duration: const Duration(milliseconds: 250),
           curve: Curves.easeOut,
         );
@@ -68,7 +151,23 @@ class _ChatViewState extends State<_ChatView> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Диалог')),
+      appBar: AppBar(
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              _partnerName,
+              style: const TextStyle(fontSize: 16),
+              overflow: TextOverflow.ellipsis,
+            ),
+            OnlineStatusIndicator(
+              lastSeen: _partnerLastSeen,
+              showText: true,
+              size: 8,
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -88,7 +187,6 @@ class _ChatViewState extends State<_ChatView> {
                   final messages =
                       (state as dynamic).messages as List<MessageModel>;
 
-                  // Скроллим вниз при первой загрузке и при новых сообщениях
                   if (messages.isNotEmpty) {
                     _scrollToBottom();
                   }
@@ -115,7 +213,7 @@ class _ChatViewState extends State<_ChatView> {
 
                   return ListView.builder(
                     controller: _scrollController,
-                    reverse: false, // ← старые сверху, новые снизу
+                    reverse: false,
                     padding: const EdgeInsets.all(12),
                     itemCount: messages.length,
                     itemBuilder: (context, i) {

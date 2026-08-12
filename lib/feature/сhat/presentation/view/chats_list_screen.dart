@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fit_talk/core/widgets/online_status_indicator.dart';
 import 'package:fit_talk/feature/%D1%81hat/presentation/bloc/chat_list_bloc/bloc/chat_list_bloc.dart';
 import 'package:fit_talk/routing/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -59,33 +60,49 @@ class ChatsListScreen extends StatelessWidget {
                       const Divider(height: 1, indent: 72),
                   itemBuilder: (context, i) {
                     final c = chats[i];
+                    debugPrint(
+                      '❓ Чат с ${c.otherUserName}: lastSeen = ${c.partnerLastSeen}',
+                    );
                     final time = c.lastMessageAt != null
-                        ? _formatTime(c.lastMessageAt!)
+                        ? _formatTime(c.lastMessageAt)
                         : '';
                     final hasUnread = c.unreadCount > 0;
 
                     return ListTile(
                       key: ValueKey(c.chatId),
-                      leading: CircleAvatar(
-                        radius: 24,
-                        backgroundImage:
-                            c.avatarUrl != null && c.avatarUrl!.isNotEmpty
-                            ? NetworkImage(c.avatarUrl!)
-                            : null,
-                        backgroundColor:
-                            c.avatarUrl == null || c.avatarUrl!.isEmpty
-                            ? _getColorFromString(c.otherUserName)
-                            : null,
-                        child: c.avatarUrl == null || c.avatarUrl!.isEmpty
-                            ? Text(
-                                _getInitials(c.otherUserName),
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              )
-                            : null,
+                      leading: Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 24,
+                            backgroundImage:
+                                c.avatarUrl != null && c.avatarUrl!.isNotEmpty
+                                ? NetworkImage(c.avatarUrl!)
+                                : null,
+                            backgroundColor:
+                                c.avatarUrl == null || c.avatarUrl!.isEmpty
+                                ? _getColorFromString(c.otherUserName)
+                                : null,
+                            child: c.avatarUrl == null || c.avatarUrl!.isEmpty
+                                ? Text(
+                                    _getInitials(c.otherUserName),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  )
+                                : null,
+                          ),
+                          // Индикатор онлайн статуса на аватаре
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: OnlineStatusIndicator(
+                              lastSeen: c.partnerLastSeen,
+                              size: 12,
+                            ),
+                          ),
+                        ],
                       ),
                       title: Row(
                         children: [
@@ -122,14 +139,29 @@ class ChatsListScreen extends StatelessWidget {
                             ),
                         ],
                       ),
-                      subtitle: Text(
-                        c.lastMessage.isEmpty ? 'Нет сообщений' : c.lastMessage,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: hasUnread ? Colors.black87 : Colors.grey[600],
-                          fontWeight: hasUnread ? FontWeight.w600 : null,
-                        ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            c.lastMessage.isEmpty
+                                ? 'Нет сообщений'
+                                : c.lastMessage,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: hasUnread
+                                  ? Colors.black87
+                                  : Colors.grey[600],
+                              fontWeight: hasUnread ? FontWeight.w600 : null,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          OnlineStatusIndicator(
+                            lastSeen: c.partnerLastSeen,
+                            showText: true,
+                            size: 8,
+                          ),
+                        ],
                       ),
                       trailing: time.isNotEmpty
                           ? Text(

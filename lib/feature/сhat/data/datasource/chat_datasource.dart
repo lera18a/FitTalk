@@ -108,6 +108,9 @@ class ChatDatasource {
             ? DateTime.now() // или null, если сделаешь поле nullable
             : DateTime.parse(row['last_message_at'] as String),
         unreadCount: (row['unread_count'] as num?)?.toInt() ?? 0,
+        partnerLastSeen: row['partner_last_seen'] != null
+            ? DateTime.parse(row['partner_last_seen'].toString())
+            : null, // 👈 ВОТ ЭТА СТРОЧКА!
       );
     }).toList();
   }

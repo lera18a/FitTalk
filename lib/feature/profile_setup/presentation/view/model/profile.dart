@@ -8,6 +8,7 @@ class ProfileModel {
   final DateTime? birthDate;
   final String? gender;
   final bool isCompleted;
+  final DateTime? lastSeen;
 
   ProfileModel({
     required this.id,
@@ -19,6 +20,7 @@ class ProfileModel {
     this.birthDate,
     this.gender,
     this.isCompleted = false,
+    this.lastSeen,
   });
 
   static ProfileModel fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,9 @@ class ProfileModel {
           : null,
       gender: json['gender'],
       isCompleted: json['is_completed'] ?? false,
+      lastSeen: json['last_seen'] != null
+          ? DateTime.parse(json['last_seen'])
+          : null,
     );
   }
 
@@ -47,6 +52,7 @@ class ProfileModel {
       'bio': bio,
       'birth_date': birthDate?.toIso8601String(),
       'gender': gender,
+      'last_seen': lastSeen?.toIso8601String(),
     };
   }
 
@@ -58,6 +64,7 @@ class ProfileModel {
     String? bio,
     DateTime? birthDate,
     String? gender,
+    DateTime? lastSeen,
   }) {
     return ProfileModel(
       id: id,
@@ -69,6 +76,7 @@ class ProfileModel {
       birthDate: birthDate ?? this.birthDate,
       gender: gender ?? this.gender,
       isCompleted: isCompleted,
+      lastSeen: lastSeen ?? this.lastSeen,
     );
   }
 }

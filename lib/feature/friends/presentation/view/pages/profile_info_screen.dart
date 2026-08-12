@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fit_talk/core/utils/app_failure.dart';
+import 'package:fit_talk/core/widgets/online_status_indicator.dart';
 import 'package:fit_talk/feature/%D1%81hat/domain/repository/chat_repository.dart';
 import 'package:fit_talk/feature/friends/presentation/bloc/profile_info_bloc/profile_info_bloc.dart';
 import 'package:fit_talk/feature/profile_setup/domain/repository/profile_repository.dart';
@@ -60,9 +61,14 @@ class _ProfileInfoView extends StatelessWidget {
                 : null,
           ),
           const SizedBox(height: 24),
+
           Text(
             '${profile.firstName ?? ''} ${profile.lastName ?? ''}',
             style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          OnlineStatusIndicator(
+            lastSeen: profile.lastSeen, // нужно добавить в ChatPreviewModel
+            showText: true,
           ),
           const SizedBox(height: 8),
           Text(
